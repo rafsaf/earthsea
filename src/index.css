@@ -1,0 +1,84 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+
+.nav-link {
+  font-family: 'Oswald', sans-serif;
+  color: #00d6d6 !important;
+  font-size: larger;
+}
+.nav-title {
+  font-family: 'Oswald', sans-serif;
+  color: #fafcfc !important;
+  font-size: x-large;
+}
+.nav-link:hover {
+  color: white !important;
+}
+.logo {
+  max-height: 100px;
+}
+.nav-bg {
+  background-color: #002a32 !important;
+}
+.part {
+  max-width: 350px;
+}
+
+.part-1 {
+  min-height: 400px;
+  background-color: rgb(28, 124, 115);
+  font-family: 'Oswald', 'sans-serif';
+  font-weight: 250;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  font-size: larger;
+  color: rgb(253, 253, 253);
+}
+.part-2 {
+  min-height: 600px;
+  background-color: rgb(212, 236, 234);
+  font-family: 'Oswald', 'sans-serif';
+  font-weight: 350;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  font-size: larger;
+  color: rgb(10, 10, 10);
+}
+
+
+
+.part-3 {
+  min-height: 600px;
+  background-color: #d6f0f7;
+  font-family: 'Oswald', 'sans-serif';
+  font-weight: 850;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  font-size: x-large;
+  background-image: 
+  linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.9)
+  ),
+  url('./img/img3.jpg');
+  color: rgb(250, 248, 248);
+}
+
+.quote {
+  font-family: fantasy !important;
+  font-size: large !important;
+}
+
+.footer-link {
+  color: #00d6d6;
+  text-decoration: underline;
+}
+
+.footer-link:hover {
+  color: white;
+
+}
