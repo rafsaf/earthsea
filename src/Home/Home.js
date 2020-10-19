@@ -1,6 +1,7 @@
 import React from 'react'
 import Image1 from '../img/img2.jpg'
 import Image2 from '../img/img4.jpg'
+import Part from '../shared/Part'
 
 function PartOne() {
     return (
@@ -12,9 +13,9 @@ function PartOne() {
             tylko w umieraniu życie:<br />
             na pustym niebie<br />
             jasny jest lot sokoła”<br />
-            <span className='quote'><br />
+            <br />
             „Czarnoksiężnik z Archipelagu”<br />
-            Ursula K. Le Guin</span>
+            Ursula K. Le Guin
             </div>
             <div className="d-none d-lg-block ml-5">
                 <img height='380' src={Image1} alt="czarnoksieznik-z-archipelagu" />
@@ -59,10 +60,28 @@ function PartThree() {
 }
 
 
+
 export default function Home() {
+    const PartOneText = (
+        <div>
+            „Tylko w milczeniu słowo,<br />
+            tylko w ciemności światło,<br />
+            tylko w umieraniu życie:<br />
+            na pustym niebie<br />
+            jasny jest lot sokoła”<br />
+            <br />
+            „Czarnoksiężnik z Archipelagu”<br />
+            Ursula K. Le Guin
+        </div>
+    )
+    
+    const PartOneImage = (
+        <img height='380' src={Image1} alt="czarnoksieznik-z-archipelagu" />
+    )
+    
     return (
         <div id="home-page">
-        <PartOne />
+        <Part left={PartOneText} right={PartOneImage} />
         <PartTwo />
         <PartThree />
         </div>

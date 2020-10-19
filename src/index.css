@@ -24,16 +24,14 @@
   max-width: 350px;
 }
 
-.part-1 {
-  min-height: 400px;
-  background-color: rgb(28, 124, 115);
+.part {
   font-family: 'Oswald', 'sans-serif';
   font-weight: 250;
   display: flex;
   align-items: center;
   vertical-align: middle;
-  font-size: larger;
-  color: rgb(253, 253, 253);
+  font-size: large;
+  width: 199vh;
 }
 .part-2 {
   min-height: 600px;
