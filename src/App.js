@@ -8,6 +8,8 @@ import { HashRouter as Router, Link, Route } from "react-router-dom";
 import Home from './Home/Home';
 import Articles from './Articles/Articles'
 import NewArticle from './NewArticle/NewArticle'
+import Characters from './Characters/Characters'
+import Places from './Places/Places'
 
 
 function Footer() {
@@ -46,17 +48,21 @@ export default function App() {
         <p className='nav-title'>Blog poświęcony uniwersum Ziemiomorza</p>
           <Nav className="mx-auto">
             
-            <Nav.Link className='nav-link' as={Link} to="/home">EARTHSEA</Nav.Link>
-            <Nav.Link className='nav-link' as={Link} to="/articles">ARTYKUŁY</Nav.Link>
-            <Nav.Link as={Link} to="/new-article">DODAJ ARTYKUŁ</Nav.Link>
+            <Nav.Link className='nav-link' as={Link} to="/home">ZIEMIOMORZE</Nav.Link>
+            <Nav.Link className='nav-link' as={Link} to="/postacie">POSTACIE</Nav.Link>
+            <Nav.Link className='nav-link' as={Link} to="/miejsca">MIEJSCA</Nav.Link>
+            <Nav.Link className='nav-link' as={Link} to="/artykuly">ARTYKUŁY</Nav.Link>
+            <Nav.Link as={Link} to="/dodaj">DODAJ ARTYKUŁ</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
 
       <Route exact path="/" component={Home} />
       <Route path="/home" component={Home} />
-      <Route path="/articles" component={Articles} />
-      <Route path="/new-article" component={NewArticle} />
+      <Route path="/postacie" component={Characters} />
+      <Route path="/miejsca" component={Places} />
+      <Route path="/artykuly" component={Articles} />
+      <Route path="/dodaj" component={NewArticle} />
       <footer><Footer /></footer>
       
 
