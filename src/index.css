@@ -25,17 +25,19 @@
 }
 
 .part {
-  font-family: 'Oswald', 'sans-serif';
+  font-family: 'f';
   font-weight: 250;
   display: flex;
+  background-color: #25978c;
   align-items: center;
   vertical-align: middle;
   font-size: large;
   width: 199vh;
+  font-family: 'normal';
 }
 .part-2 {
   min-height: 600px;
-  background-color: rgb(212, 236, 234);
+  background-color:#04272e;
   font-family: 'Oswald', 'sans-serif';
   font-weight: 350;
   display: flex;

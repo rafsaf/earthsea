@@ -2,6 +2,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import Part from './shared/Part'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { HashRouter as Router, Link, Route } from "react-router-dom";
@@ -13,23 +14,20 @@ import Places from './Places/Places'
 
 
 function Footer() {
-
+  const PartText = (
+    <div style={{
+        paddingTop: '10%'
+    }}>
+        Są pewne mury, których nie należy budować. Są pewne granice, których nie powinno się przekraczać. Zapalić świecę znaczy rzucić cień, niebezpiecznie jest zmienić choć ułamek świata nie wiedząc jakie dobro i zło wywoła ten czyn. W świecie Ziemiomorza, każdy ma dwa imiona, jedno użytkowe, drugie prawdziwe. Znać czyjeś prawdziwe imię znaczy mieć nad nim wielką władzę, zdradzenie go jest oznaką miłości i zaufania. Magia, smoki, władza... Ged, późniejszy Arcymag Ziemiomorza znany jako Krogulec, pierwsze kroki na drodze, którą kroczył całe życie - na drodze magii, stawiał wzywając sokoły ich prawdziwym imieniem, na które musiały się zjawić. Na początku zdawała się ona szerokim, jasnym gościńcem. Zdawało się, że mag to ktoś, kto potrafi uczynić wszystko. A prawda jest taka, że im bardziej rośnie prawdziwa moc człowieka i poszerza się jego wiedza, tym bardziej zwęża się droga, którą może kroczyć; aż wreszcie niczego już nie wybiera, lecz czyni tylko i wyłącznie to, co musi czynić...
+        <br /> <br />
+        &copy; 2020 <a rel='noopener noreferrer' target='_blank' className='footer-link' href='https://www.rafsaf.pl/'>rafsaf.pl</a>
+    </div>
+  
+  )
   return (
-        <div className='justify-content-center' style={{
-          backgroundColor: '#002a32',
-          height: '100px',
-          display: 'flex',
-          color: '#00d6d6',
-          alignItems: "flex-end",
-          verticalAlign: 'middle',
-          }}>
-            <div>
-              Created 2020 by <a rel='noopener noreferrer' target='_blank' className='footer-link' href='https://www.rafsaf.pl/'>rafsaf.pl</a>
-            </div>
-        </div>
+        <Part height='300px' font='normal' background='#002a32' left={PartText} lg={5} />
   );
 }
-
 
 
 export default function App() {
