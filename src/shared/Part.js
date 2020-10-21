@@ -1,6 +1,7 @@
 import React from 'react'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
 
 export default function Part(props) {
     const height = props.height ? props.height : 400
@@ -10,27 +11,34 @@ export default function Part(props) {
     const right = props.right
     
     return (
-        <div className='justify-content-center' style={{
+        <div style={{
             minHeight: height, 
             color: color,
             backgroundColor: background,
+            
             fontFamily: 'Oswald, sans-serif',
         }}>
-        <Row >
-        <Col xs lg={4}>
+        <div className='d-none d-lg-block'>
+        <Row className='w-100 justify-content-center text-center'>
+        <Col lg={'auto'} className='my-auto'>
             {left}
         </Col>
-        <Col lg={4} className='d-none d-lg-block ml-5'>
-            {right}
+        <Col lg={'auto'} className='py-3'>
+                {right}
+            
         </Col>
         </Row>
-        <Row>
-        <Col>
-        <div className='row d-block d-lg-none'>
-            {right}
         </div>
-        </Col>
-        </Row>
+        <div className='text-center d-block d-lg-none'>
+            <div className='pt-3'>
+            {left}
+            </div>
+            <div className='py-3'>
+            {right}
+            </div>
+            
+            
+        </div>
         </div>
     )
 }

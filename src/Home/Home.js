@@ -28,7 +28,7 @@ function PartOne() {
 function PartTwo() {
     return (
         <div className='part-2 justify-content-center'>
-            <div className="d-none d-lg-block mr-5">
+            <div className="d-none d-lg-block">
                 <img height='480' src={Image2} alt="czarnoksieznik-z-archipelagu" />
             </div>
             <div className='part'>
@@ -76,14 +76,16 @@ export default function Home() {
     )
     
     const PartOneImage = (
-        <img height='380' src={Image1} alt="czarnoksieznik-z-archipelagu" />
+        <div>
+            <img className='img-fluid' src={Image1} alt="czarnoksieznik-z-archipelagu" />
+        </div>
     )
     
     return (
         <div id="home-page">
-        <Part left={PartOneText} right={PartOneImage} />
-        <PartTwo />
-        <PartThree />
+        <Part height='300px' left={PartOneText} right={PartOneImage} />
+        
+        
         </div>
     )
 }
