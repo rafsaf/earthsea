@@ -41,9 +41,9 @@ export default function Home() {
         <Col xs={12} xl={9}>
         <Row className='justify-content-center py-5'>
         <MyCard />
+        <MyCard one />
         <MyCard />
-        <MyCard />
-        <MyCard />
+        <MyCard one />
         <MyCard />
         <MyCard />
         <MyCard />
