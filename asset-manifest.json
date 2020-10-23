@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/rafsaf/earthsea/static/css/main.895f3a92.chunk.css",
-    "main.js": "/rafsaf/earthsea/static/js/main.8fe6bfab.chunk.js",
-    "main.js.map": "/rafsaf/earthsea/static/js/main.8fe6bfab.chunk.js.map",
-    "runtime-main.js": "/rafsaf/earthsea/static/js/runtime-main.106a661f.js",
-    "runtime-main.js.map": "/rafsaf/earthsea/static/js/runtime-main.106a661f.js.map",
-    "static/css/2.626e4169.chunk.css": "/rafsaf/earthsea/static/css/2.626e4169.chunk.css",
-    "static/js/2.3333dfcc.chunk.js": "/rafsaf/earthsea/static/js/2.3333dfcc.chunk.js",
-    "static/js/2.3333dfcc.chunk.js.map": "/rafsaf/earthsea/static/js/2.3333dfcc.chunk.js.map",
-    "index.html": "/rafsaf/earthsea/index.html",
-    "precache-manifest.4f61837994fc34065df82c5f4176eaa0.js": "/rafsaf/earthsea/precache-manifest.4f61837994fc34065df82c5f4176eaa0.js",
-    "service-worker.js": "/rafsaf/earthsea/service-worker.js",
-    "static/css/2.626e4169.chunk.css.map": "/rafsaf/earthsea/static/css/2.626e4169.chunk.css.map",
-    "static/css/main.895f3a92.chunk.css.map": "/rafsaf/earthsea/static/css/main.895f3a92.chunk.css.map",
-    "static/js/2.3333dfcc.chunk.js.LICENSE.txt": "/rafsaf/earthsea/static/js/2.3333dfcc.chunk.js.LICENSE.txt",
-    "static/media/img2.jpg": "/rafsaf/earthsea/static/media/img2.ba07da22.jpg",
-    "static/media/index.css": "/rafsaf/earthsea/static/media/img3.2a8cdbf4.jpg",
-    "static/media/img4.jpg": "/rafsaf/earthsea/static/media/img4.171f21bc.jpg",
-    "static/media/ziemiomorze.jpg": "/rafsaf/earthsea/static/media/ziemiomorze.4cdf0c52.jpg"
+    "main.css": "/earthsea/static/css/main.6308215a.chunk.css",
+    "main.js": "/earthsea/static/js/main.cdd6361d.chunk.js",
+    "main.js.map": "/earthsea/static/js/main.cdd6361d.chunk.js.map",
+    "runtime-main.js": "/earthsea/static/js/runtime-main.7766a2f0.js",
+    "runtime-main.js.map": "/earthsea/static/js/runtime-main.7766a2f0.js.map",
+    "static/css/2.626e4169.chunk.css": "/earthsea/static/css/2.626e4169.chunk.css",
+    "static/js/2.3333dfcc.chunk.js": "/earthsea/static/js/2.3333dfcc.chunk.js",
+    "static/js/2.3333dfcc.chunk.js.map": "/earthsea/static/js/2.3333dfcc.chunk.js.map",
+    "index.html": "/earthsea/index.html",
+    "precache-manifest.167ff48e66a21ab4a98dc7cb9c76313b.js": "/earthsea/precache-manifest.167ff48e66a21ab4a98dc7cb9c76313b.js",
+    "service-worker.js": "/earthsea/service-worker.js",
+    "static/css/2.626e4169.chunk.css.map": "/earthsea/static/css/2.626e4169.chunk.css.map",
+    "static/css/main.6308215a.chunk.css.map": "/earthsea/static/css/main.6308215a.chunk.css.map",
+    "static/js/2.3333dfcc.chunk.js.LICENSE.txt": "/earthsea/static/js/2.3333dfcc.chunk.js.LICENSE.txt",
+    "static/media/img2.jpg": "/earthsea/static/media/img2.ba07da22.jpg",
+    "static/media/index.css": "/earthsea/static/media/img3.2a8cdbf4.jpg",
+    "static/media/img4.jpg": "/earthsea/static/media/img4.171f21bc.jpg",
+    "static/media/ziemiomorze.jpg": "/earthsea/static/media/ziemiomorze.4cdf0c52.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.106a661f.js",
+    "static/js/runtime-main.7766a2f0.js",
     "static/css/2.626e4169.chunk.css",
     "static/js/2.3333dfcc.chunk.js",
-    "static/css/main.895f3a92.chunk.css",
-    "static/js/main.8fe6bfab.chunk.js"
+    "static/css/main.6308215a.chunk.css",
+    "static/js/main.cdd6361d.chunk.js"
   ]
 }
