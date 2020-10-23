@@ -54,13 +54,13 @@ export default function App() {
         </Navbar.Collapse>
       </Navbar>
       <Switch>
-      <Route exact path={process.env.PUBLIC_URL + '/'} component={Home} />
-      <Route path={process.env.PUBLIC_URL + '/home'} component={Home} />
-      <Route path={process.env.PUBLIC_URL + 'postacie'} component={Characters} />
-      <Route path={process.env.PUBLIC_URL + '/miejsca'} component={Places} />
-      <Route path={process.env.PUBLIC_URL + 'artykuly'} component={Articles} />
-      <Route path={process.env.PUBLIC_URL + '/dodaj'} component={NewArticle} />
-      <Route path={process.env.PUBLIC_URL + '/:topicName'} component={SingleArticle} />
+      <Route exact path="/" component={Home} />
+      <Route path="/home" component={Home} />
+      <Route path="/postacie" component={Characters} />
+      <Route path="/miejsca" component={Places} />
+      <Route path="/artykuly" component={Articles} />
+      <Route path="/dodaj" component={NewArticle} />
+      <Route path="/:topicName" component={SingleArticle} />
 
       </Switch>
       <footer><Footer /></footer>
