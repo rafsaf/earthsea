@@ -1,6 +1,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
 
+#main-nav {
+  height: 50px;
+}
+
 .nav-link {
   font-family: 'Oswald', sans-serif;
   color: #00d6d6 !important;

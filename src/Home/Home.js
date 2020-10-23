@@ -30,8 +30,8 @@ export default function Home() {
     
 
     return (
-        <div id="home-page">
-        <Part size='larger' height='300px' left={PartOneText} right={PartOneImage} />
+        <div id="home-page" >
+        <Part Image size='larger' height='300px' left={PartOneText} right={PartOneImage} />
         
         <Container fluid style={{
             backgroundImage: `url(${Image2})`,
@@ -57,7 +57,7 @@ export default function Home() {
         <Col xs={12} xl={3}>
         <Row className='justify-content-center py-5'>
         <Col xs={12} className='py-3'>
-            <Part height='10px' left={<div >Najnowsze</div>} size='xx-large'>
+            <Part Image height='10px' left={<div >Najnowsze</div>} size='xx-large'>
             </Part>
         </Col>
            

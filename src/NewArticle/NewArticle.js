@@ -1,6 +1,22 @@
 import React from 'react';
 import { Editor, EditorState, RichUtils } from 'draft-js';
+import {convertToHTML, convertFromHTML} from 'draft-convert'
 import 'draft-js/dist/Draft.css';
+
+function MyEditor() {
+    const editorState= EditorState.createWithContent(convertFromHTML('<ul><li>kkk</li></ul><ol type="1"><li>jjj</li></ol><h4>jjjj</h4><h4><u>jjjjkkkkkkkkkkkkkkkk</u></h4><blockquote>kjkkkkkkkkkkkkkkkkkkkkk</blockquote><blockquote>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadsasddasdsa</blockquote>'));
+
+    
+  
+    return (
+
+    
+        <div className='RichEditor-editor'>
+              <Editor  blockStyleFn={getBlockStyle} customStyleMap={styleMap} editorState={editorState} />
+    </div>
+    
+    )
+  }
 
 class RichEditorExample extends React.Component {
     constructor(props) {
@@ -63,27 +79,42 @@ class RichEditorExample extends React.Component {
         }
 
         return (
-            <div className="RichEditor-root">
-                <BlockStyleControls
-                    editorState={editorState}
-                    onToggle={this.toggleBlockType}
-                />
-                <InlineStyleControls
-                    editorState={editorState}
-                    onToggle={this.toggleInlineStyle}
-                />
-                <div className={className} onClick={this.focus}>
-                    <Editor
-                        blockStyleFn={getBlockStyle}
-                        customStyleMap={styleMap}
+            <div>
+                <div>
+                
+                    <button
+                        onClick={() => {
+
+                            alert(` HTML to Save ${convertToHTML(this.state.editorState.getCurrentContent())}`);
+                        }}
+                    >
+                        Save
+              </button>
+                </div>
+                <div className="RichEditor-root">
+
+                    <BlockStyleControls
                         editorState={editorState}
-                        handleKeyCommand={this.handleKeyCommand}
-                        onChange={this.onChange}
-                        onTab={this.onTab}
-                        placeholder="Napisz coś..."
-                        ref="editor"
-                        spellCheck={true}
+                        onToggle={this.toggleBlockType}
                     />
+                    <InlineStyleControls
+                        editorState={editorState}
+                        onToggle={this.toggleInlineStyle}
+                    />
+                    <div className={className} onClick={this.focus}>
+                        <Editor
+                            blockStyleFn={getBlockStyle}
+                            customStyleMap={styleMap}
+                            editorState={editorState}
+                            handleKeyCommand={this.handleKeyCommand}
+                            onChange={this.onChange}
+                            onTab={this.onTab}
+                            placeholder="Napisz coś..."
+                            ref="editor"
+                            spellCheck={true}
+                        />
+                    </div>
+                    
                 </div>
             </div>
         );
@@ -140,7 +171,6 @@ const BLOCK_TYPES = [
     { label: 'Blockquote', style: 'blockquote' },
     { label: 'UL', style: 'unordered-list-item' },
     { label: 'OL', style: 'ordered-list-item' },
-    { label: 'Code Block', style: 'code-block' },
 ];
 
 const BlockStyleControls = (props) => {
@@ -204,6 +234,8 @@ function PartOne() {
 export default function NewArticle() {
     return (
         <div id='new article'>
+            <MyEditor />
+
             <PartOne />
             <RichEditorExample />
         </div>
