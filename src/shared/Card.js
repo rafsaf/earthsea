@@ -6,7 +6,7 @@ import TestImage from '../img/img2.jpg'
 export default function MyCard(props) {
     if (props.fullWidth) {
     return (
-        <Card style={{ width: '22rem' }} className='px-2 py-2 my-2'>
+        <Card style={{ width: '18rem' }} className='px-2 py-2 my-2'>
         <Card.Img variant='top' src={TestImage} />
         <Card.Body>
             <Card.Title>Card Title</Card.Title>
