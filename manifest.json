@@ -1,0 +1,10 @@
+{
+  "short_name": "Blog o Ziemiomorzu",
+  "name": "Ziemiomorze to blog w całości poświęcony uniwersum stworzonym przez Ursulę Le Guin. Znajdziesz tu opisy postaci, miejsc, artykuły i wiele innych",
+  "icons": [
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
