@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/rafsaf/earthsea/precache-manifest.38da5f0560b9b5ed6bcbdae6b1577095.js"
+  "/rafsaf/earthsea/precache-manifest.4f61837994fc34065df82c5f4176eaa0.js"
 );
 
 self.addEventListener('message', (event) => {
