@@ -1,9 +1,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
 
-#main-nav {
-  height: 50px;
+@media (min-width: 993px) {
+  #main-nav {
+    height: 50px;
+  }
 }
+
 
 .nav-link {
   font-family: 'Oswald', sans-serif;

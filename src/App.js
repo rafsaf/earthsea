@@ -7,6 +7,7 @@ import Part from './shared/Part'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import { createBrowserHistory } from 'history';
 import Home from './Home/Home';
 import Articles from './Articles/Articles'
 import NewArticle from './NewArticle/NewArticle'
@@ -33,10 +34,10 @@ function Footer() {
 
 
 export default function App() {
-
+  let history = createBrowserHistory()
   return (
     <div style={{marginTop: '50px'}}>
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router history={history} basename={process.env.PUBLIC_URL}>
 
 
       <Navbar fixed='top' id='main-nav' collapseOnSelect expand="lg" className='nav-bg' variant="dark" >
