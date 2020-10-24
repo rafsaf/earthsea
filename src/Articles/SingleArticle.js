@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState, useEffect } from 'react'
 import {
     Switch,
     Route,
@@ -8,40 +7,52 @@ import {
     useParams,
 } from "react-router-dom";
 import Part from '../shared/Part'
-import { Editor, EditorState, RichUtils, CompositeDecorator, convertToRaw } from 'draft-js';
+import { EditorState, RichUtils } from 'draft-js';
+import Editor from 'draft-js-plugins-editor';
+import createLinkifyPlugin from 'draft-js-linkify-plugin';
 import { convertToHTML, convertFromHTML } from 'draft-convert'
-import addLinkPlugin from './addLinkPlugin'
 import 'draft-js/dist/Draft.css';
 
-function MyEditor(props) {
-    const editorState = EditorState.createWithContent(convertFromHTML('<ul><li>kkk</li></ul><ol type="1"><li>jjj</li></ol><h4>jjjj</h4><h4><u>jjjjkkkkkkkkkkkkkkkk</u></h4><blockquote>kjkkkkkkkkkkkkkkkkkkkkk</blockquote><blockquote>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadsasddasdsa</blockquote>'));
+export default function NewArticle() {
+    let { topicName } = useParams();
+
+    if (topicName === 'Ged') {
+        return (
+            <div id='new article' style={{ paddingTop: '2%' }}>
+
+                <Part height='80vh' lg={6} color='rgb(77, 76, 76)' background='white' left={
+                    <RichEditorExample title='Ged' text='<p><u>sdadas</u></p><h1><u>saddasdasdsa</u><code>saddasasasasasas</code></h1><h1><code>saddas</code></h1><h1><code>https://www.draft-js-plugins.com/plugin/linkify</code></h1>' />
+                } />
 
 
 
+                
+            </div>
+        )
+    }
     return (
-        <div>
-            <div className='RichEditor-editor'>
-                {props.title}
+        <Part left={
+            <div style={{ paddingTop: '5%' }}>
+                <h3>{topicName}</h3>
+                <h3>Nie znaleziono artukułu o takiej nazwie!</h3>
+                <p>Upewnij się że podany adres url jest poprawny oraz czy materiał nie został usunięty.</p>
             </div>
-
-            <div className='RichEditor-editor'>
-                <Editor readOnly blockStyleFn={getBlockStyle} customStyleMap={styleMap} editorState={editorState} />
-            </div>
-        </div>
-
+        } height='80vh' />
     )
 }
+
+const linkifyPlugin = createLinkifyPlugin();
 
 class RichEditorExample extends React.Component {
     constructor(props) {
         super(props);
 
+        const blocks = convertFromHTML(props.text);
+
         this.state = {
-            editorState: EditorState.createEmpty(),
+            editorState: EditorState.createWithContent(blocks),
+            editMode: false,
         };
-        this.plugins = [
-            addLinkPlugin,
-          ];
         this.focus = () => this.refs.editor.focus();
 
         this.onTab = (e) => this._onTab(e);
@@ -54,28 +65,6 @@ class RichEditorExample extends React.Component {
           editorState
         });
       };
-    onAddLink = () => {
-        const editorState = this.state.editorState;
-        const selection = editorState.getSelection();
-        const link = window.prompt("Paste the link -");
-        if (!link) {
-        this.onChange(RichUtils.toggleLink(editorState, selection, null));
-        return "handled";
-        }
-
-        const content = editorState.getCurrentContent();
-        const contentWithEntity = content.createEntity("LINK", "MUTABLE", {
-        url: link
-        });
-        const newEditorState = EditorState.push(
-        editorState,
-        contentWithEntity,
-        "create-entity"
-        );
-        const entityKey = contentWithEntity.getLastCreatedEntityKey();
-        this.onChange(RichUtils.toggleLink(newEditorState, selection, entityKey));
-        return "handled";
-    };
 
     handleKeyCommand = command => {
         const newState = RichUtils.handleKeyCommand(
@@ -128,21 +117,21 @@ class RichEditorExample extends React.Component {
                 className += ' RichEditor-hidePlaceholder';
             }
         }
-
+        if (this.state.editMode) {
         return (
             <div>
-                <div>
 
-                    <button
+                <div className="RichEditor-root">
+                <div className='text-left'>
+                <button className='btn btn-sm btn-primary mb-2'
                         onClick={() => {
 
                             alert(` HTML to Save ${convertToHTML(this.state.editorState.getCurrentContent())}`);
                         }}
                     >
-                        Save
+                        Zapisz zmiany
               </button>
                 </div>
-                <div className="RichEditor-root">
 
                     <BlockStyleControls
                         editorState={editorState}
@@ -152,9 +141,7 @@ class RichEditorExample extends React.Component {
                         editorState={editorState}
                         onToggle={this.toggleInlineStyle}
                     />
-                    <div>
-                        <button id='link_url' className='add-link' onClick={this.onAddLink}>link</button>
-                    </div>
+
                     <div className={className} onClick={this.focus}>
                         <Editor
                             blockStyleFn={getBlockStyle}
@@ -165,16 +152,52 @@ class RichEditorExample extends React.Component {
                             onTab={this.onTab}
                             placeholder="Napisz coś..."
                             ref="editor"
-                            plugins={this.plugins}
+                            plugins={[linkifyPlugin]}
                             spellCheck={true}
                         />
                     </div>
 
                 </div>
             </div>
-        );
+        );}
+        return (
+            <div>
+                <div className='text-left'>
+                <button className='btn btn-primary btn-sm ' onClick={() => {this.setState({editMode: true})}}>
+                        Edytuj
+                    </button>
+                </div>
+
+                <div>
+                    <h1>{this.props.title} </h1>
+
+
+                </div>
+                <div className="RichEditor-editor">
+                    <Editor
+                        blockStyleFn={getBlockStyle}
+                        customStyleMap={styleMap}
+                        editorState = {this.state.editorState}
+                        readOnly={true}
+                        plugins={[linkifyPlugin]}
+                        onChange ={ (editorState) => this.setState({editorState})}
+                        />
+                </div>
+        </div>
+        )
     }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Custom overrides for "code" style.
@@ -280,30 +303,4 @@ const InlineStyleControls = (props) => {
 
 
 
-export default function NewArticle() {
-    let { topicName } = useParams();
 
-    if (topicName === 'Ged') {
-        return (
-            <div id='new article' style={{ paddingTop: '2%' }}>
-
-                <Part lg={6} color='rgb(77, 76, 76)' background='white' left={
-                    <MyEditor title={topicName} />
-                } />
-
-
-
-                <RichEditorExample />
-            </div>
-        )
-    }
-    return (
-        <Part left={
-            <div style={{ paddingTop: '5%' }}>
-                <h3>{topicName}</h3>
-                <h3>Nie znaleziono artukułu o takiej nazwie!</h3>
-                <p>Upewnij się że podany adres url jest poprawny oraz czy materiał nie został usunięty.</p>
-            </div>
-        } height='80vh' />
-    )
-}
