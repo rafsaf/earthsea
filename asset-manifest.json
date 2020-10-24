@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/earthsea/static/css/main.40efa8ba.chunk.css",
-    "main.js": "/earthsea/static/js/main.ae3fb2ea.chunk.js",
-    "main.js.map": "/earthsea/static/js/main.ae3fb2ea.chunk.js.map",
+    "main.css": "/earthsea/static/css/main.2efd82ca.chunk.css",
+    "main.js": "/earthsea/static/js/main.6b327c8c.chunk.js",
+    "main.js.map": "/earthsea/static/js/main.6b327c8c.chunk.js.map",
     "runtime-main.js": "/earthsea/static/js/runtime-main.7766a2f0.js",
     "runtime-main.js.map": "/earthsea/static/js/runtime-main.7766a2f0.js.map",
     "static/css/2.626e4169.chunk.css": "/earthsea/static/css/2.626e4169.chunk.css",
-    "static/js/2.498ead2e.chunk.js": "/earthsea/static/js/2.498ead2e.chunk.js",
-    "static/js/2.498ead2e.chunk.js.map": "/earthsea/static/js/2.498ead2e.chunk.js.map",
+    "static/js/2.f1b52611.chunk.js": "/earthsea/static/js/2.f1b52611.chunk.js",
+    "static/js/2.f1b52611.chunk.js.map": "/earthsea/static/js/2.f1b52611.chunk.js.map",
     "index.html": "/earthsea/index.html",
-    "precache-manifest.4381302376e57167ddc25a17c1620c9d.js": "/earthsea/precache-manifest.4381302376e57167ddc25a17c1620c9d.js",
+    "precache-manifest.8abf4de3cddd4784bef14a6c63e8a472.js": "/earthsea/precache-manifest.8abf4de3cddd4784bef14a6c63e8a472.js",
     "service-worker.js": "/earthsea/service-worker.js",
     "static/css/2.626e4169.chunk.css.map": "/earthsea/static/css/2.626e4169.chunk.css.map",
-    "static/css/main.40efa8ba.chunk.css.map": "/earthsea/static/css/main.40efa8ba.chunk.css.map",
-    "static/js/2.498ead2e.chunk.js.LICENSE.txt": "/earthsea/static/js/2.498ead2e.chunk.js.LICENSE.txt",
+    "static/css/main.2efd82ca.chunk.css.map": "/earthsea/static/css/main.2efd82ca.chunk.css.map",
+    "static/js/2.f1b52611.chunk.js.LICENSE.txt": "/earthsea/static/js/2.f1b52611.chunk.js.LICENSE.txt",
     "static/media/img2.jpg": "/earthsea/static/media/img2.ba07da22.jpg",
     "static/media/index.css": "/earthsea/static/media/img3.2a8cdbf4.jpg",
     "static/media/img4.jpg": "/earthsea/static/media/img4.171f21bc.jpg",
@@ -22,8 +22,8 @@
   "entrypoints": [
     "static/js/runtime-main.7766a2f0.js",
     "static/css/2.626e4169.chunk.css",
-    "static/js/2.498ead2e.chunk.js",
-    "static/css/main.40efa8ba.chunk.css",
-    "static/js/main.ae3fb2ea.chunk.js"
+    "static/js/2.f1b52611.chunk.js",
+    "static/css/main.2efd82ca.chunk.css",
+    "static/js/main.6b327c8c.chunk.js"
   ]
 }
