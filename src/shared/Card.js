@@ -8,7 +8,7 @@ export default function MyCard(props) {
 
         if (!props.one) {
     return (
-        <Card style={{ width: '18rem' }} className='px-2 py-2 my-2 mx-1'>
+        <Card style={{ width: '14rem' }} className='px-2 py-2 my-2 mx-1'>
         <Card.Img variant='top' src={TestImage} />
         <Card.Body>
             <Card.Title>Card Title</Card.Title>
@@ -21,7 +21,7 @@ export default function MyCard(props) {
         </Card>
     )} else {
         return (
-            <Card style={{ width: '18rem' }} className='px-2 py-2 my-2 mx-1'>
+            <Card style={{ width: '14rem' }} className='px-2 py-2 my-2 mx-1'>
             <Card.Img variant='top' src={Image} />
             <Card.Body>
                 <Card.Title>Card Title</Card.Title>

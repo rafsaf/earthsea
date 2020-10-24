@@ -34,14 +34,13 @@ function Footer() {
 
 export default function App() {
   return (
-    <div style={{marginTop: '50px'}}>
+    <div className='app'>
       <Router hashType='noslash'>
 
 
       <Navbar fixed='top' id='main-nav' collapseOnSelect expand="lg" className='nav-bg' variant="dark" >
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-        <p className='nav-title my-auto'>Blog poświęcony uniwersum Ziemiomorza</p>
           <Nav className="mx-auto">
             
             <Nav.Link className='nav-link' as={Link} to="/home">ZIEMIOMORZE</Nav.Link>
