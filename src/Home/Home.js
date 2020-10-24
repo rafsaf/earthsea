@@ -7,25 +7,14 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import {
-    faYoutube,
     faFacebook,
     faTwitter,
-    faInstagram
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Data from '../fake'
 
 
 export default function Home() {
-    const PartOneText = (
-        <div className='py-3'>
-            „Tylko w milczeniu słowo,<br />
-            tylko w ciemności światło,<br />
-            tylko w umieraniu życie:<br />
-            na pustym niebie<br />
-            jasny jest lot sokoła”<br />
-        </div>
-    )
 
     const PartOneImage = (
         <div>
@@ -36,11 +25,11 @@ export default function Home() {
     const PartOneRight = (
         <div className='ursula pb-2'>
             <div className='py-4'>
-                <a href="https://www.facebook.com/learnbuildteach/"
+                <a href="https://www.facebook.com/"
                     className="facebook social">
                     <FontAwesomeIcon icon={faFacebook} size='lg' />
                 </a>
-                <a href="https://www.twitter.com/jamesqquick" className="twitter social">
+                <a href="https://www.twitter.com/" className="twitter social">
                     <FontAwesomeIcon icon={faTwitter}  size='lg'/>
                 </a>
                 <button size='2x' className='btn my-auto btn-lg btn-outline-primary'>

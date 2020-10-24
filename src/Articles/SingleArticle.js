@@ -1,32 +1,69 @@
-import React from 'react';
-import {
-    Switch,
-    Route,
-    Redirect,
-    useRouteMatch,
-    useParams,
-} from "react-router-dom";
+
+import React, {useState, useEffect} from 'react';
+import {useParams,} from "react-router-dom";
 import Part from '../shared/Part'
+import Error from '../shared/Error'
+import Data from '../fake'
 import { EditorState, RichUtils } from 'draft-js';
 import Editor from 'draft-js-plugins-editor';
 import createLinkifyPlugin from 'draft-js-linkify-plugin';
 import { convertToHTML, convertFromHTML } from 'draft-convert'
 import 'draft-js/dist/Draft.css';
+import {
+    faFacebook,
+    faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
+import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function NewArticle() {
     let { topicName } = useParams();
+    const [article, setArticle] = useState()
+    const [articleError, setArticleError] = useState(null)
 
-    if (topicName === 'Ged') {
+    const fetchArticle = () => {
+        setArticle(Data[0]);
+    }
+
+    useEffect(
+        () => {
+        fetchArticle()
+    }, []
+    )
+
+    if (articleError !== 'notFound') {
+
         return (
+            
             <div id='new article' style={{ paddingTop: '2%' }}>
 
+                {article ?
+
                 <Part height='80vh' lg={6} color='rgb(77, 76, 76)' background='white' left={
-                    <RichEditorExample title='Ged' text='<p><u>sdadas</u></p><h1><u>saddasdasdsa</u><code>saddasasasasasas</code></h1><h1><code>saddas</code></h1><h1><code>https://www.draft-js-plugins.com/plugin/linkify</code></h1>' />
-                } />
+                    <RichEditorExample
+                    title={article.title}
+                    created={article.created}
+                    lastModified={article.lastModified}
+                    image={article.image}
+                    verified={article.verified}
+                    notVerified={article.notVerified}
+                    like={article.like}
+                    unlike={article.unlike}/>
+                } /> 
 
+                : 
+                <div className='text-center'>
 
+                <Error
+                show={articleError}
+                onExit={() => {
+                    setArticleError(false);
+                    fetchArticle();
+                    }}>
+                </Error>
+                </div>
 
-                
+                }
             </div>
         )
     }
@@ -47,10 +84,11 @@ class RichEditorExample extends React.Component {
     constructor(props) {
         super(props);
 
-        const blocks = convertFromHTML(props.text);
+        this.blocks = convertFromHTML(props.verified);
+        this.secondBlocks = convertFromHTML(props.notVerified)
 
         this.state = {
-            editorState: EditorState.createWithContent(blocks),
+            editorState: EditorState.createWithContent(this.blocks),
             editMode: false,
         };
         this.focus = () => this.refs.editor.focus();
@@ -123,7 +161,18 @@ class RichEditorExample extends React.Component {
 
                 <div className="RichEditor-root">
                 <div className='text-left'>
-                <button className='btn btn-sm btn-primary mb-2'
+                <button className='btn btn-sm btn-outline-primary mb-2'
+                        onClick={() => 
+                            {this.setState(
+                               {
+                               editMode: false,
+                               editorState: EditorState.createWithContent(this.blocks)
+                               }
+                            )}}
+                    >
+                        Powrót
+              </button>
+                <button className='btn btn-sm btn-outline-primary mb-2 ml-1'
                         onClick={() => {
 
                             alert(` HTML to Save ${convertToHTML(this.state.editorState.getCurrentContent())}`);
@@ -163,17 +212,42 @@ class RichEditorExample extends React.Component {
         return (
             <div>
                 <div className='text-left'>
-                <button className='btn btn-primary btn-sm ' onClick={() => {this.setState({editMode: true})}}>
+                <button 
+                className='btn btn-primary btn-sm mr-1'
+                 onClick={() => 
+                 {this.setState(
+                    {
+                    editMode: true,
+                    editorState: EditorState.createWithContent(this.secondBlocks)
+                    }
+                 )}}>
                         Edytuj
                     </button>
-                </div>
+                    <button className='btn btn-default mr-1'>
+                    {this.props.like} <FontAwesomeIcon color='blue' icon={faThumbsUp}  />
+                </button>
+                <button className='btn btn-default mr-1'>
+                {this.props.unlike} <FontAwesomeIcon color='black' icon={faThumbsDown}  />
+                </button>
+                    <a href="https://www.facebook.com/"
+                    className="facebook social mr-1">
+                    <FontAwesomeIcon icon={faFacebook}  />
+                </a>
+                <a href="https://www.twitter.com/" className="twitter social mr-1">
+                    <FontAwesomeIcon icon={faTwitter}  />
+                </a>
 
+                </div>
                 <div>
                     <h1>{this.props.title} </h1>
 
 
                 </div>
-                <div className="RichEditor-editor">
+                    <div className='my-5'>
+                        <img src={this.props.image} alt='title-image' />
+                    </div>
+
+                <div className="RichEditor-editor mb-5">
                     <Editor
                         blockStyleFn={getBlockStyle}
                         customStyleMap={styleMap}
