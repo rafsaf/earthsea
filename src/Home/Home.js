@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Image1 from '../img/ziemiomorze.jpg'
 import Image2 from '../img/img3.jpg'
 import Part from '../shared/Part'
@@ -13,6 +13,7 @@ import {
     faInstagram
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Data from '../fake'
 
 
 export default function Home() {
@@ -49,7 +50,7 @@ export default function Home() {
             Blog poświęcony uniwersum Ziemiomorza autorstwa Ursuli Le Guin.
         </div>
     )
-
+    const [articles, setArticles] = useState(Data)
 
     return (
         <div id="home-page" >
@@ -62,18 +63,17 @@ export default function Home() {
                 <Row className='justify-content-center py-3'>
                     <Col xs={12} xl={9}>
                         <Row className='justify-content-center py-2'>
-                            <MyCard />
-                            <MyCard one />
-                            <MyCard />
-                            <MyCard one />
-                            <MyCard />
-                            <MyCard />
-                            <MyCard />
-                            <MyCard />
-                            <MyCard />
-                            <MyCard />
-                            <MyCard />
-                            <MyCard />
+                        {articles.map(row => (
+                            <MyCard
+                            key={row.description}
+                            title={row.title}
+                            description={row.description}
+                            image={row.image}
+                            text={row.text} 
+                            link={row.link}>
+
+                            </MyCard>
+                        ))}
                         </Row>
                     </Col>
                     <Col xs={12} xl={3}>
