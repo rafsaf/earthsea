@@ -35,7 +35,7 @@ function Footer() {
 export default function App() {
   return (
     <div style={{marginTop: '50px'}}>
-      <Router>
+      <Router hashType='noslash'>
 
 
       <Navbar fixed='top' id='main-nav' collapseOnSelect expand="lg" className='nav-bg' variant="dark" >
