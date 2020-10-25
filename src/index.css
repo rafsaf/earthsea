@@ -45,7 +45,7 @@
   font-family: 'f';
   font-weight: 250;
   display: flex;
-  background-color: #25978c;
+  background-color: #1d7c72;
   align-items: center;
   vertical-align: middle;
   font-size: large;
@@ -68,7 +68,7 @@
 
 .part-3 {
   min-height: 600px;
-  background-color: #d6f0f7;
+  background-color: #c1cf9b;
   font-family: 'Oswald', 'sans-serif';
   font-weight: 850;
   display: flex;
