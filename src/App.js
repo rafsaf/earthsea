@@ -1,11 +1,12 @@
 
 import React from 'react';
-import {useState, useEffect} from 'react'
+import {useEffect} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Part from './shared/Part'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import { useLocation } from "react-router-dom";
 import { HashRouter as Router, Link, Route, Switch } from "react-router-dom";
 import Home from './Home/Home';
 import Articles from './Articles/Articles'
@@ -32,11 +33,22 @@ function Footer() {
 }
 
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
+
 export default function App() {
   return (
     <div className='app'>
       <Router hashType='noslash'>
-
+      <ScrollToTop />
 
       <Navbar fixed='top' id='main-nav' collapseOnSelect expand="lg" className='nav-bg' variant="dark" >
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -52,6 +64,7 @@ export default function App() {
         </Navbar.Collapse>
       </Navbar>
       <Switch>
+        
       <Route exact path="/" component={Home} />
       <Route path="/home" component={Home} />
       <Route path="/postacie" component={Characters} />
