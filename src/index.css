@@ -17,6 +17,10 @@
   font-family: 'Lobster', cursive;
   font-size: x-large;
 }
+.title {
+  font-family: 'Oswald', sans-serif;
+  font-size: x-large;
+}
 
 .nav-link {
   font-family: 'Oswald', sans-serif;
@@ -42,7 +46,8 @@
 }
 
 .part {
-  font-family: 'f';
+  font-family: '';
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: 250;
   display: flex;
   background-color: #1d7c72;
@@ -189,6 +194,7 @@ a.youtube {
 
 a.facebook {
   color: #1660ff;
+
 }
 
 a.twitter {

@@ -6,7 +6,7 @@ export default function MyCard(props) {
 
     return (
         <Card style={{ width: '17rem' }} className='px-2 py-2 my-2 mx-1'>
-            <Card.Header><h1 className='ursula'>{props.title}</h1></Card.Header>
+            <Card.Header style={{backgroundColor: '#002a32', color: 'white', backgroundImage: 'linear-gradient(90deg, rgba(0,42,50,1) 0%, rgba(9,100,121,1) 66%, rgba(26,151,161,1) 100%)' }}><h1 className='title'>{props.title}</h1></Card.Header>
             <Card.Body>
                 <Card.Title></Card.Title>
                 <Card.Text>

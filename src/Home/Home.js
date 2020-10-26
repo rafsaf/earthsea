@@ -23,18 +23,20 @@ export default function Home() {
     )
 
     const PartOneRight = (
-        <div className='ursula pb-2'>
-            <div className='py-4'>
+        <div className='ursula pb-4'>
+            <div className='py-2 '>
+            <span className='badge badge-light'>
                 <a href="https://www.facebook.com/"
-                    className="facebook social">
+                    className="facebook social my-auto">
                     <FontAwesomeIcon icon={faFacebook} size='lg' />
                 </a>
                 <a href="https://www.twitter.com/" className="twitter social">
                     <FontAwesomeIcon icon={faTwitter}  size='lg'/>
                 </a>
-                <button size='2x' className='btn my-auto btn-lg btn-outline-primary'>
+                <button className='btn my-auto btn-outline-primary'>
                     Follow
                 </button>
+            </span>
             </div>
             Blog poświęcony uniwersum Ziemiomorza autorstwa Ursuli Le Guin.
         </div>
