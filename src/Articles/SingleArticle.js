@@ -9,12 +9,9 @@ import Editor from 'draft-js-plugins-editor';
 import createLinkifyPlugin from 'draft-js-linkify-plugin';
 import { convertToHTML, convertFromHTML } from 'draft-convert'
 import 'draft-js/dist/Draft.css';
-import {
-    faFacebook,
-    faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Container from 'react-bootstrap/Container'
 
 export default function NewArticle() {
     let { topicName } = useParams();
@@ -36,9 +33,9 @@ export default function NewArticle() {
         return (
             
             <div id='new article' style={{ paddingTop: '2%' }}>
-
+                <Container fluid>
                 {article ?
-
+                
                 <Part height='80vh' lg={6} color='rgb(77, 76, 76)' background='white' left={
                     <RichEditorExample
                     title={article.title}
@@ -48,7 +45,10 @@ export default function NewArticle() {
                     verified={article.verified}
                     notVerified={article.notVerified}
                     like={article.like}
-                    unlike={article.unlike}/>
+                    unlike={article.unlike}
+                    author={article.author}
+                    source={article.source} 
+                    />
                 } /> 
 
                 : 
@@ -64,6 +64,7 @@ export default function NewArticle() {
                 </div>
 
                 }
+                </Container>
             </div>
         )
     }
@@ -85,7 +86,6 @@ class RichEditorExample extends React.Component {
         super(props);
 
         this.blocks = convertFromHTML(props.verified);
-        this.secondBlocks = convertFromHTML(props.notVerified)
 
         this.state = {
             editorState: EditorState.createWithContent(this.blocks),
@@ -166,7 +166,6 @@ class RichEditorExample extends React.Component {
                             {this.setState(
                                {
                                editMode: false,
-                               editorState: EditorState.createWithContent(this.blocks)
                                }
                             )}}
                     >
@@ -212,13 +211,14 @@ class RichEditorExample extends React.Component {
         return (
             <div>
                 <div className='text-left'>
+                <p>Dodany przez: {this.props.author}</p>
+                
                 <button 
                 className='btn btn-primary btn-sm mr-1'
                  onClick={() => 
                  {this.setState(
                     {
                     editMode: true,
-                    editorState: EditorState.createWithContent(this.secondBlocks)
                     }
                  )}}>
                         Edytuj
@@ -229,22 +229,18 @@ class RichEditorExample extends React.Component {
                 <button className='btn btn-default mr-1'>
                 {this.props.unlike} <FontAwesomeIcon color='black' icon={faThumbsDown}  />
                 </button>
-                    <a href="https://www.facebook.com/"
-                    className="facebook social mr-1">
-                    <FontAwesomeIcon icon={faFacebook}  />
-                </a>
-                <a href="https://www.twitter.com/" className="twitter social mr-1">
-                    <FontAwesomeIcon icon={faTwitter}  />
-                </a>
-
+                
                 </div>
                 <div>
-                    <h1>{this.props.title} </h1>
+                    <h1 className='mt-4'>{this.props.title} </h1>
 
 
                 </div>
                     <div className='my-5'>
-                        <img src={this.props.image} alt='title-image' />
+                    <figure class="figure">
+                        <img className='img-fluid' src={this.props.image} alt='title-image' />
+                <figcaption class="figure-caption">Źródło: {this.props.source ? this.props.source : 'Nieznane'}</figcaption>
+                    </figure>
                     </div>
 
                 <div className="RichEditor-editor mb-5">

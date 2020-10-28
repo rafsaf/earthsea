@@ -6,11 +6,6 @@ import MyCard from '../shared/Card'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
-import {
-    faFacebook,
-    faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Data from '../fake'
 
 
@@ -23,28 +18,16 @@ export default function Home() {
     )
 
     const PartOneRight = (
-        <div className='ursula pb-4'>
-            <div className='py-2 '>
-            <span className='badge badge-light'>
-                <a href="https://www.facebook.com/"
-                    className="facebook social my-auto">
-                    <FontAwesomeIcon icon={faFacebook} size='lg' />
-                </a>
-                <a href="https://www.twitter.com/" className="twitter social">
-                    <FontAwesomeIcon icon={faTwitter}  size='lg'/>
-                </a>
-                <button className='btn my-auto btn-outline-primary'>
-                    Follow
-                </button>
-            </span>
-            </div>
+        <div className='ursula py-4'>
+            
             Blog poświęcony uniwersum Ziemiomorza autorstwa Ursuli Le Guin.
         </div>
     )
     const [articles, setArticles] = useState(Data)
 
     return (
-        <div id="home-page" >
+        <div id="home-page container-fluid" >
+
             <Part Image size='larger' height='100px' right={PartOneRight} />
 
             <Container fluid style={{

@@ -14,21 +14,40 @@ import NewArticle from './NewArticle/NewArticle'
 import Characters from './Characters/Characters'
 import Places from './Places/Places'
 import SingleArticle from './Articles/SingleArticle'
-
+import {
+  faFacebook,
+} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Footer() {
   const PartText = (
     <div style={{
         paddingTop: '10%'
     }}>
-        Są pewne mury, których nie należy budować. Są pewne granice, których nie powinno się przekraczać. Zapalić świecę znaczy rzucić cień, niebezpiecznie jest zmienić choć ułamek świata nie wiedząc jakie dobro i zło wywoła ten czyn. W świecie Ziemiomorza, każdy ma dwa imiona, jedno użytkowe, drugie prawdziwe. Znać czyjeś prawdziwe imię znaczy mieć nad nim wielką władzę, zdradzenie go jest oznaką miłości i zaufania. Magia, smoki, władza... Ged, późniejszy Arcymag Ziemiomorza znany jako Krogulec, pierwsze kroki na drodze, którą kroczył całe życie - na drodze magii, stawiał wzywając sokoły ich prawdziwym imieniem, na które musiały się zjawić. Na początku zdawała się ona szerokim, jasnym gościńcem. Zdawało się, że mag to ktoś, kto potrafi uczynić wszystko. A prawda jest taka, że im bardziej rośnie prawdziwa moc człowieka i poszerza się jego wiedza, tym bardziej zwęża się droga, którą może kroczyć; aż wreszcie niczego już nie wybiera, lecz czyni tylko i wyłącznie to, co musi czynić...
+        Znajdź nas na Facebooku i podziel się uwagami<br />
+        <div className='text-center'>
+            <span className='badge badge-light btn-block my-2'>
+                <a href="https://www.facebook.com/"
+                    className="facebook social my-auto">
+                    <FontAwesomeIcon href="https://www.facebook.com/" icon={faFacebook} size='3x' />
+                </a>
+
+            </span>
+            </div>
+        <br />
+        Są pewne mury, których nie należy budować. Są pewne granice, których nie powinno się przekraczać. Zapalić świecę znaczy rzucić cień, niebezpiecznie jest zmienić choć ułamek świata nie wiedząc jakie dobro i zło wywoła ten czyn. W świecie Ziemiomorza, każdy ma dwa imiona, jedno użytkowe, drugie prawdziwe. Znać czyjeś prawdziwe imię znaczy mieć nad nim wielką władzę, zdradzenie go jest oznaką miłości i zaufania. Ged, późniejszy Arcymag Ziemiomorza znany jako Krogulec, pierwsze kroki na drodze, którą kroczył całe życie - na drodze magii, stawiał wzywając sokoły ich prawdziwym imieniem, na które musiały się zjawić. Na początku zdawała się ona szerokim, jasnym gościńcem. Zdawało się, że mag to ktoś, kto potrafi uczynić wszystko. A prawda jest taka, że im bardziej rośnie prawdziwa moc człowieka i poszerza się jego wiedza, tym bardziej zwęża się droga, którą może kroczyć; aż wreszcie niczego już nie wybiera, lecz czyni tylko i wyłącznie to, co musi czynić...
         <br /> <br />
+
         &copy; 2020 <a rel='noopener noreferrer' target='_blank' className='footer-link' href='https://www.rafsaf.pl/'>rafsaf.pl</a>
     </div>
+    
   
   )
-  return (
+  return (<div id = 'footer'>
+    
         <Part height='300px' font='normal' background='#002a32' left={PartText} lg={5} />
+
+            </div>
   );
 }
 
@@ -59,7 +78,7 @@ export default function App() {
             <Nav.Link className='nav-link' as={Link} to="/postacie">POSTACIE</Nav.Link>
             <Nav.Link className='nav-link' as={Link} to="/miejsca">MIEJSCA</Nav.Link>
             <Nav.Link className='nav-link' as={Link} to="/artykuly">ARTYKUŁY</Nav.Link>
-            <Nav.Link as={Link} to="/dodaj">DODAJ ARTYKUŁ</Nav.Link>
+            <Nav.Link as={Link} to="/dodaj">DODAJ STRONĘ</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

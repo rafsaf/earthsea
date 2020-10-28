@@ -5,13 +5,19 @@ export default
         "slug": "Ged",
         "created": "2020-07-31r",
         "lastModified": "2020-07-31r",
+        "mainPage": true,
         "link": "/Ged",
         "image": "https://2.bp.blogspot.com/-3LptOEumhCo/Uz_OnDyTNLI/AAAAAAAABPs/vcwO0x9pJbY/s1600/czarnoksieznik-z-archipelagu-b-iext22043259.jpg",
-        "description": "Jeden z głownych bohaterów cyklu, potężny czarnoksiężnik, późniejszy Arcymag Ziemiomorza oraz Władca Smoków, pochodził z wyspy Gont.",
+        "description": "Jeden z głownych bohaterów cyklu, potężny czarnoksiężnik, późniejszy Arcymag Ziemiomorza oraz Władca Smoków znany jako Krogulec lub Jastrząb, pochodził z wyspy Gont.",
         "verified": "<p><u>Już zweryfikowany</u></p><h1><u>saddasdasdsa</u><code>saddasasasasasas</code></h1><h1><code>saddas</code></h1><h1><code>https://www.draft-js-plugins.com/plugin/linkify</code></h1>",
-        "notVerified": "<p><u>Nie zweryfikowany!</u></p><h1><u>saddasdasdsa</u><code>saddasasasasasas</code></h1><h1><code>saddas</code></h1><h1><code>https://www.draft-js-plugins.com/plugin/linkify</code></h1>",
+        "versions": [
+            4,
+            5,
+        ],
         "like": "10",
-        "unlike": "0"
+        "unlike": "0",
+        "source": "https://2.bp.blogspot.com",
+        "author": "Rafał Safin",
         
     },
     {
@@ -21,11 +27,13 @@ export default
         "lastModified": "2020-07-31r",
         "link": "/Ged",
         "image": "https://2.bp.blogspot.com/-3LptOEumhCo/Uz_OnDyTNLI/AAAAAAAABPs/vcwO0x9pJbY/s1600/czarnoksieznik-z-archipelagu-b-iext22043259.jpg",
-        "description": "Jeden z głownych bohaterów cyklu, potężny czarnoksiężnik, późniejszy Arcymag Ziemiomorza oraz Władca Smoków, pochodził z wyspy Gont.",
+        "description": "Jeden z głownych bohaterów cyklu, potężny czarnoksiężnik, późniejszy Arcymag Ziemiomorza oraz Władca Smoków znany jako Krogulec lub Jastrząb, pochodził z wyspy Gont.",
         "verified": "<p><u>Już zweryfikowany</u></p><h1><u>saddasdasdsa</u><code>saddasasasasasas</code></h1><h1><code>saddas</code></h1><h1><code>https://www.draft-js-plugins.com/plugin/linkify</code></h1>",
         "notVerified": "<p><u>Nie zweryfikowany!</u></p><h1><u>saddasdasdsa</u><code>saddasasasasasas</code></h1><h1><code>saddas</code></h1><h1><code>https://www.draft-js-plugins.com/plugin/linkify</code></h1>",
         "like": "10",
-        "unlike": "0"
+        "unlike": "0",
+        "source": "https://2.bp.blogspot.com",
+        "author": "Rafał Safin",
         
     },
     {
@@ -38,7 +46,9 @@ export default
         "verified": "<p><u>Już zweryfikowany</u></p><h1><u>Ursula</u><code>saddasasasasasas</code></h1><h1><code>saddas</code></h1><h1><code>https://www.draft-js-plugins.com/plugin/linkify</code></h1>",
         "notVerified": "<p><u>Nie zweryfikowany!</u></p><h1><u>Ursula</u><code>saddasasasasasas</code></h1><h1><code>saddas</code></h1><h1><code>https://www.draft-js-plugins.com/plugin/linkify</code></h1>",
         "like": "5",
-        "unlike": "2"
+        "unlike": "2",
+        "source": "https://2.bp.blogspot.com",
+        "author": "Rafał Safin",
     },
     {
         "title": "Ursula Le Guin",

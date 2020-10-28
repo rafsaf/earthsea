@@ -180,20 +180,18 @@
 
 a.social {
   margin: 0 1rem;
-  transition: transform 250ms;
   display: inline-block;
+  align-self: end;
 }
 
-a.social:hover {
-  transform: translateY(-2px);
-}
+
 
 a.youtube {
   color: #eb3223;
 }
 
 a.facebook {
-  color: #1660ff;
+  color: #1660ff !important;
 
 }
 
