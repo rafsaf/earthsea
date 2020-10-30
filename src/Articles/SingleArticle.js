@@ -4,22 +4,32 @@ import {useParams,} from "react-router-dom";
 import Part from '../shared/Part'
 import Error from '../shared/Error'
 import Data from '../fake'
+import Ver from '../fake_version'
+import API from '../shared/API'
+import Select from './select'
 import { EditorState, RichUtils } from 'draft-js';
 import Editor from 'draft-js-plugins-editor';
 import createLinkifyPlugin from 'draft-js-linkify-plugin';
 import { convertToHTML, convertFromHTML } from 'draft-convert'
 import 'draft-js/dist/Draft.css';
-import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons'
+import { faThumbsUp, faThumbsDown, faTimesCircle, faCheckCircle, faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Container from 'react-bootstrap/Container'
 
 export default function NewArticle() {
     let { topicName } = useParams();
     const [article, setArticle] = useState()
+    const [version, setVersion] = useState()
+    const [allVersions, setAllVersions] = useState()
     const [articleError, setArticleError] = useState(null)
 
     const fetchArticle = () => {
-        setArticle(Data[0]);
+        setArticle(Data[0])
+    }
+
+    const fetchVersions = () => {
+        setAllVersions(Ver)
+        setVersion(Ver[0])
     }
 
     useEffect(
@@ -27,6 +37,18 @@ export default function NewArticle() {
         fetchArticle()
     }, []
     )
+
+    useEffect(
+        () => {
+        fetchVersions()
+    }, []
+    )
+
+    const handleClick = (id) => {
+        const current = allVersions.filter((row)=>row.id===parseInt(id))
+        
+        setVersion(current[0])
+    }
 
     if (articleError !== 'notFound') {
 
@@ -38,13 +60,16 @@ export default function NewArticle() {
                 
                 <Part height='80vh' lg={6} color='rgb(77, 76, 76)' background='white' left={
                     <RichEditorExample
+                    onChange={handleClick}
+                    allVersions={allVersions}
                     title={article.title}
                     created={article.created}
-                    lastModified={article.lastModified}
+                    lastModified={version.created}
                     image={article.image}
-                    verified={article.verified}
-                    notVerified={article.notVerified}
+                    text={version.text}
                     like={article.like}
+                    confirm={version.confirm}
+                    imageConfirm={article.image_confirm}
                     unlike={article.unlike}
                     author={article.author}
                     source={article.source} 
@@ -85,11 +110,12 @@ class RichEditorExample extends React.Component {
     constructor(props) {
         super(props);
 
-        this.blocks = convertFromHTML(props.verified);
+        this.blocks = convertFromHTML(props.text);
 
         this.state = {
             editorState: EditorState.createWithContent(this.blocks),
             editMode: false,
+            saved: false
         };
         this.focus = () => this.refs.editor.focus();
 
@@ -103,6 +129,13 @@ class RichEditorExample extends React.Component {
           editorState
         });
       };
+    
+    componentDidUpdate(prevProps) {
+        if (this.props.text !== prevProps.text) {
+            this.blocks = convertFromHTML(this.props.text)
+            this.setState({editorState: EditorState.createWithContent(this.blocks)})
+        }
+    }v
 
     handleKeyCommand = command => {
         const newState = RichUtils.handleKeyCommand(
@@ -141,7 +174,6 @@ class RichEditorExample extends React.Component {
         );
     }
 
-
     render() {
         
         const { editorState } = this.state;
@@ -160,24 +192,59 @@ class RichEditorExample extends React.Component {
             <div>
 
                 <div className="RichEditor-root">
+                <div className='text-right'>
+
+                <button className='btn btn-sm btn-outline-primary mb-5'
+                        onClick={() => {
+
+                            alert(` HTML to Save ${convertToHTML(this.state.editorState.getCurrentContent())}`);
+                        }}
+                    >
+                        Zaproponuj zmiany i wyślij
+              </button>
+                </div>
                 <div className='text-left'>
                 <button className='btn btn-sm btn-outline-primary mb-2'
                         onClick={() => 
                             {this.setState(
                                {
                                editMode: false,
+                               editorState: EditorState.createWithContent(this.blocks)
                                }
                             )}}
                     >
                         Powrót
               </button>
-                <button className='btn btn-sm btn-outline-primary mb-2 ml-1'
-                        onClick={() => {
-
-                            alert(` HTML to Save ${convertToHTML(this.state.editorState.getCurrentContent())}`);
-                        }}
+                <button className='btn btn-sm btn-outline-success mb-2 ml-2'
+                        onClick={() => 
+                            {
+                                const actualText = convertToHTML(this.state.editorState.getCurrentContent())
+                                localStorage.setItem(this.props.title, actualText)
+                                this.setState({saved : true})
+                                setTimeout(()=>{
+                                    this.setState({saved: false})
+                                }
+                                ,2000)
+                            }}
                     >
-                        Zapisz zmiany
+                        {this.state.saved ?
+                        <span>Zapisano...</span>
+                        :
+                        <span>Zapisz zawartość lokalnie</span>
+                        
+                        
+                        }
+              </button>
+                <button className='btn btn-sm btn-outline-success mb-2 ml-2'
+                        onClick={() => 
+                            {
+                                const savedText = convertFromHTML(
+                                    localStorage.getItem(this.props.title)
+                                )
+                                this.setState({editorState: EditorState.createWithContent(savedText)})
+                            }}
+                    >
+                        Wczytaj zawartość
               </button>
                 </div>
 
@@ -211,6 +278,20 @@ class RichEditorExample extends React.Component {
         return (
             <div>
                 <div className='text-left'>
+                {
+                    this.props.confirm ?
+                    <FontAwesomeIcon color='green' icon={faCheckCircle}  />
+                    :
+                    <FontAwesomeIcon color='red' icon={faTimesCircle}  />
+                }
+                {
+                    this.props.imageConfirm ?
+                    <FontAwesomeIcon color='green' icon={faCheckCircle}  />
+                    :
+                    <FontAwesomeIcon color='red' icon={faTimesCircle}  />
+                }
+
+                <Select onChange={this.props.onChange} allVersions={this.props.allVersions} />
                 <p>Dodany przez: {this.props.author}</p>
                 
                 <button 
@@ -237,10 +318,19 @@ class RichEditorExample extends React.Component {
 
                 </div>
                     <div className='my-5'>
+                    {
+                    this.props.imageConfirm ?
                     <figure class="figure">
-                        <img className='img-fluid' src={this.props.image} alt='title-image' />
-                <figcaption class="figure-caption">Źródło: {this.props.source ? this.props.source : 'Nieznane'}</figcaption>
+                    <img className='img-fluid' src={this.props.image} alt='title-image' />
+                    <figcaption class="figure-caption">Źródło: {this.props.source ? this.props.source : 'Nieznane'}</figcaption>
                     </figure>
+                    :
+                    <div>
+                    <FontAwesomeIcon size='8x' color='red' icon={faExclamationCircle}  />
+                    <figcaption class="figure-caption">Zdjęcie niezwerfikowane</figcaption>
+                    </div>
+
+                    }
                     </div>
 
                 <div className="RichEditor-editor mb-5">

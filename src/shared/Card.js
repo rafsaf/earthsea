@@ -15,7 +15,7 @@ export default function MyCard(props) {
                             {props.description}
                         </footer>
                     </blockquote>
-                    <Card.Link as={Link} to={props.link}>Czytaj dalej...</Card.Link>
+                    <Card.Link as={Link} to={'/' + props.slug}>Czytaj dalej...</Card.Link>
                 </Card.Text>
 
             </Card.Body>

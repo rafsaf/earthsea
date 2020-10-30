@@ -31,11 +31,11 @@ export default function Home() {
             <Part Image size='larger' height='100px' right={PartOneRight} />
 
             <Container fluid style={{
-                backgroundImage: `url(${Image2})`,
-                backgroundColor: 'none'
+                
+                backgroundColor: 'white'
             }}>
                 <Row className='justify-content-center py-3'>
-                    <Col xs={12} xl={9}>
+                    <Col xs={12} xl={8}>
                         <Row className='justify-content-center py-2'>
                         {articles.map(row => (
                             <MyCard
@@ -43,8 +43,7 @@ export default function Home() {
                             title={row.title}
                             description={row.description}
                             image={row.image}
-                            text={row.text} 
-                            link={row.link}>
+                            slug={row.slug}>
 
                             </MyCard>
                         ))}
