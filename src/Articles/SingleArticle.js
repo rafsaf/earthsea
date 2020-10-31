@@ -320,14 +320,14 @@ class RichEditorExample extends React.Component {
                     <div className='my-5'>
                     {
                     this.props.imageConfirm ?
-                    <figure class="figure">
-                    <img className='img-fluid' src={this.props.image} alt='title-image' />
-                    <figcaption class="figure-caption">Źródło: {this.props.source ? this.props.source : 'Nieznane'}</figcaption>
+                    <figure className="figure">
+                    <img className='img-fluid' src={this.props.image} alt='title' />
+                    <figcaption className="figure-caption">Źródło: {this.props.source ? this.props.source : 'Nieznane'}</figcaption>
                     </figure>
                     :
                     <div>
                     <FontAwesomeIcon size='8x' color='red' icon={faExclamationCircle}  />
-                    <figcaption class="figure-caption">Zdjęcie niezwerfikowane</figcaption>
+                    <figcaption className="figure-caption">Zdjęcie niezwerfikowane</figcaption>
                     </div>
 
                     }

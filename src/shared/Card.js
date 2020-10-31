@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Card from 'react-bootstrap/Card'
-import { Redirect, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function MyCard(props) {
 
@@ -19,7 +19,11 @@ export default function MyCard(props) {
                 </Card.Text>
 
             </Card.Body>
+            {props.image ?
             <Card.Img variant='bottom' src={props.image} />
+            :
+            <p></p>
+            }
         </Card>
     )
 }

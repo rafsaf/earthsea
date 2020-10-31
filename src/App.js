@@ -43,11 +43,11 @@ function Footer() {
     
   
   )
-  return (<div id = 'footer'>
+  return (<footer>
     
         <Part height='300px' font='normal' background='#002a32' left={PartText} lg={5} />
 
-            </div>
+            </footer>
   );
 }
 

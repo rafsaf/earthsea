@@ -1,6 +1,4 @@
 import React, {useState} from 'react'
-import Image1 from '../img/ziemiomorze.jpg'
-import Image2 from '../img/img3.jpg'
 import Part from '../shared/Part'
 import MyCard from '../shared/Card'
 import Row from 'react-bootstrap/Row'
@@ -10,12 +8,6 @@ import Data from '../fake'
 
 
 export default function Home() {
-
-    const PartOneImage = (
-        <div>
-            <img className='img-fluid py-3' src={Image1} alt="czarnoksieznik-z-archipelagu" />
-        </div>
-    )
 
     const PartOneRight = (
         <div className='ursula py-4'>
