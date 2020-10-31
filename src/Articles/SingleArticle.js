@@ -12,7 +12,7 @@ import Editor from 'draft-js-plugins-editor';
 import createLinkifyPlugin from 'draft-js-linkify-plugin';
 import { convertToHTML, convertFromHTML } from 'draft-convert'
 import 'draft-js/dist/Draft.css';
-import { faThumbsUp, faThumbsDown, faTimesCircle, faCheckCircle, faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
+import { faThumbsUp, faThumbsDown, faTimesCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Container from 'react-bootstrap/Container'
 
@@ -290,7 +290,11 @@ class RichEditorExample extends React.Component {
                     :
                     <FontAwesomeIcon color='red' icon={faTimesCircle}  />
                 }
-
+                {this.props.confirm ?
+                <span></span>
+                :
+                <span style={{color:'red'}} className='small ml-1'>Artykuł niezweryfikowany</span>
+                }
                 <Select onChange={this.props.onChange} allVersions={this.props.allVersions} />
                 <p>Dodany przez: {this.props.author}</p>
                 
@@ -326,8 +330,7 @@ class RichEditorExample extends React.Component {
                     </figure>
                     :
                     <div>
-                    <FontAwesomeIcon size='8x' color='red' icon={faExclamationCircle}  />
-                    <figcaption className="figure-caption">Zdjęcie niezwerfikowane</figcaption>
+                    <figcaption className="figure-caption">Zdjęcie niezwerfikowane.</figcaption>
                     </div>
 
                     }

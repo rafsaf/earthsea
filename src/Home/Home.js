@@ -8,7 +8,7 @@ import Data from '../fake'
 
 
 export default function Home() {
-
+    const width = window.innerWidth
     const PartOneRight = (
         <div className='ursula py-4'>
             
@@ -26,11 +26,14 @@ export default function Home() {
                 
                 backgroundColor: 'white'
             }}>
-                <Row className='justify-content-center py-3'>
-                    <Col xs={12} xl={8}>
-                        <Row className='justify-content-center py-2'>
+                <Row className=' mx-1 py-3 justify-content-center'>
+
+                    <Col xs={12} xl={{span:8, offset:1}}>
+                        <Row className='py-2 pr-3 justify-content-center'
+                >
                         {articles.map(row => (
-                            <MyCard
+                            <MyCard 
+                            homeWidth
                             key={row.description}
                             title={row.title}
                             description={row.description}
@@ -41,7 +44,7 @@ export default function Home() {
                         ))}
                         </Row>
                     </Col>
-                    <Col xs={12} xl={3}>
+                    <Col xs={12} xl={2}>
                         <Row className='justify-content-center py-5'>
                             <Col xs={12} className='py-3'>
                                 <Part Image height='10px' left={<div className='ursula'>Najnowsze</div>} size='xx-large'>

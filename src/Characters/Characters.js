@@ -1,25 +1,67 @@
 import React, {useState} from 'react'
-import {
-    Link,
-    Redirect,
-  } from "react-router-dom";
+import TextField from '@material-ui/core/TextField';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Data from '../fake'
+import MyCard from '../shared/Card'
+import Part from '../shared/Part'
+import RadioGroup from '../shared/radioGroup'
+
 
 export default function Characters() {
-    const [redirect, setRedirect] = useState(false)
-    const [param, setParam] = useState('')
-    
-    if (redirect) {
-        return <Redirect to={param}/>
+    const [filter, setFilter] = useState('all')
+    const [articles, setArticles] = useState(Data)
+    const [search, setSearch] = useState(null)
+    const PartOne = (
+        <div className='ursula py-4'>
+            Postacie
+        </div>
+    )
+    const handleChange = (value) => {
+        setFilter(value)
     }
+
+    const filterRow = (row) => {
+        if (filter === 'description') {
+            return (row.description.toLowerCase().includes(search.toLowerCase()))
+        } else if (filter === 'title') {
+            return (row.title.toLowerCase().includes(search.toLowerCase()))
+        } else {
+            return (row.title.toLowerCase().includes(search.toLowerCase()) || row.description.toLowerCase().includes(search.toLowerCase()))
+        }
+    }
+
+    const searchSpace=(event)=>{
+        let keyword = event.target.value;
+        setSearch(keyword)
+      }
+
     return (
-        <div>
-            Postacie<br />
-            <Link to='/Ged' onClick={()=>{
-                setParam('/Ged')
-                setRedirect(true)
-            }} >
-                Ged
-            </Link>
+        <div id='characters'>
+        <Part Image size='larger' height='100px' right={PartOne} />
+        <Container fluid style={{minHeight:'80vh'}}>
+            
+            <TextField onChange={(e)=>searchSpace(e)} className='mt-4 mb-2' style={{width: '90%'}} size='large' id="standard-basic" label="Tutaj wpisz szukaną frazę..." />
+            <RadioGroup handleChange={handleChange} />
+            <Row className='justify-content-center mx-1'>
+                {articles.filter(row=>{
+                        if(search == null)
+                            return row
+                        else if(filterRow(row)){
+                            return row
+                        }
+                    }).map(row => (
+                            <MyCard
+                            small
+                            key={row.description}
+                            title={row.title}
+                            description={row.description}
+                            slug={row.slug}>
+
+                            </MyCard>
+                        ))}
+            </Row>
+        </Container>
         </div>
     )
 }
