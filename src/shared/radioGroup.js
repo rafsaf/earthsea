@@ -14,7 +14,7 @@ export default function RadioButtonsGroup(props) {
   };
 
   return (
-      <div className='my-3'>
+      <div className='my-3 mx-1'>
     <FormControl component="fieldset">
       <RadioGroup row aria-label="filter" name="filter" value={value} onChange={handleChange}>
         <FormControlLabel value="all" control={<Radio />} label="Szukaj wszędzie" />

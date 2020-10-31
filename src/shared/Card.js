@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export default function MyCard(props) {
     const small = props.small ? 'px-1 py-2 my-2 col-6 col-md-3 col-xl-2' : null
-    const fullWidth = props.fullWidth ? 'px-1 py-2 my-2 col-6 col-lg-12 ' : null
+    const fullWidth = props.fullWidth ? ' my-2 col-6 col-lg-12 ' : null
     const homeWidth = props.homeWidth ? 'px-1 py-2 my-2 col-6 col-lg-3' : null
     let cardClass
     if (small) {
@@ -17,11 +17,11 @@ export default function MyCard(props) {
 
     return (
         <Card className={cardClass}>
-            <Card.Header style={{backgroundColor: 'white', color: 'black',  }}><h1 className='title'>{props.title}</h1></Card.Header>
-            <Card.Body>
+            <Card.Header style={{backgroundColor: 'white', color: 'black', height: '5rem' }}><h1 className='title'>{props.title}</h1></Card.Header>
+            <Card.Body style={{paddingLeft: '1vh', paddingRight: '0'}}>
                 <Card.Title></Card.Title>
                 <Card.Text>
-                    <blockquote className="blockquote">
+                    <blockquote className="blockquote" >
                         <footer className="blockquote-footer">
                             {props.description}
                         </footer>
@@ -30,11 +30,14 @@ export default function MyCard(props) {
                 </Card.Text>
 
             </Card.Body>
+            <div className='text-center' >
             {props.image ?
-            <Card.Img variant='bottom' src={props.image} />
+            <img className='cardImage'  src={props.image} />
             :
             <span></span>
             }
+            </div>
+
         </Card>
     )
 }

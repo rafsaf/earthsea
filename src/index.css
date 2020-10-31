@@ -69,8 +69,17 @@
   color: rgb(10, 10, 10);
 }
 
-
-
+.cardImage {
+  max-width: 80%;
+  max-height: 250px;
+}
+.news {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  position: relative;
+}
 .part-3 {
   min-height: 600px;
   background-color: #c1cf9b;

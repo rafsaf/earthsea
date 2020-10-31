@@ -7,6 +7,7 @@ export default
 
         "main_page": true,
 
+        // do 24 znaków
         "title": "Ged",
         
         "slug": "ged",
@@ -42,7 +43,7 @@ export default
 
         "main_page": true,
 
-        "title": "Ursula le Guin",
+        "title": "Ursula Le Guin",
         
         "slug": "ursula-le-guin",
 

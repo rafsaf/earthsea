@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import TextField from '@material-ui/core/TextField';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import Data from '../fake'
 import MyCard from '../shared/Card'
 import Part from '../shared/Part'
@@ -41,9 +42,13 @@ export default function Characters() {
         <Part Image size='larger' height='100px' right={PartOne} />
         <Container fluid style={{minHeight:'80vh'}}>
             
-            <TextField onChange={(e)=>searchSpace(e)} className='mt-4 mb-2' style={{width: '90%'}} size='large' id="standard-basic" label="Tutaj wpisz szukaną frazę..." />
+
+            <Row className='justify-content-center'>
+            <Col xs={12} lg={11} xl={10}>
+            <TextField onChange={(e)=>searchSpace(e)} className='mx-1 mt-4 mb-2' style={{width: '99%'}} size='large' id="standard-basic" label="Tutaj wpisz szukaną frazę..." />
             <RadioGroup handleChange={handleChange} />
             <Row className='justify-content-center mx-1'>
+                
                 {articles.filter(row=>{
                         if(search == null)
                             return row
@@ -60,6 +65,10 @@ export default function Characters() {
 
                             </MyCard>
                         ))}
+                
+
+            </Row>
+            </Col>
             </Row>
         </Container>
         </div>

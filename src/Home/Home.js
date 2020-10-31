@@ -29,7 +29,7 @@ export default function Home() {
                 <Row className=' mx-1 py-3 justify-content-center'>
 
                     <Col xs={12} xl={{span:8, offset:1}}>
-                        <Row className='py-2 pr-3 justify-content-center'
+                        <Row className='py-2 justify-content-center'
                 >
                         {articles.map(row => (
                             <MyCard 
@@ -45,8 +45,9 @@ export default function Home() {
                         </Row>
                     </Col>
                     <Col xs={12} xl={2}>
+                        <div className='d-none d-xl-block pl-4'>
                         <Row className='justify-content-center py-5'>
-                            <Col xs={12} className='py-3'>
+                            <Col xs={12} className='py-3 news'>
                                 <Part Image height='10px' left={<div className='ursula'>Najnowsze</div>} size='xx-large'>
                                 </Part>
                             </Col>
@@ -58,6 +59,24 @@ export default function Home() {
 
 
                         </Row>
+                        </div>
+                        <div className='d-block d-xl-none'>
+                        <Row className='justify-content-center py-5'>
+                            <Col xs={12} className='news' >
+
+                                <Part Image height='10px' left={<div className='ursula w-100'>Najnowsze</div>} size='xx-large'>
+                                </Part>
+                                </Col>
+
+
+                            <MyCard fullWidth />
+                            <MyCard fullWidth />
+                            <MyCard fullWidth />
+
+
+                        </Row>
+                        </div>
+
                     </Col>
                 </Row>
             </Container>
