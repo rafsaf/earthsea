@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0ff58fca759cb925412975a58253e5a2",
+    "revision": "3a13bd854c26d10f7b2ad932191388c5",
     "url": "/earthsea/index.html"
   },
   {
-    "revision": "6f8caac872b62ce14810",
+    "revision": "7ffd54e4108798d7bd81",
     "url": "/earthsea/static/css/2.626e4169.chunk.css"
   },
   {
-    "revision": "7fd353da4af5c309731e",
-    "url": "/earthsea/static/css/main.313060b7.chunk.css"
+    "revision": "2cbdc5db32e8f297f72f",
+    "url": "/earthsea/static/css/main.b906bf6d.chunk.css"
   },
   {
-    "revision": "6f8caac872b62ce14810",
-    "url": "/earthsea/static/js/2.630094b0.chunk.js"
+    "revision": "7ffd54e4108798d7bd81",
+    "url": "/earthsea/static/js/2.681376f4.chunk.js"
   },
   {
     "revision": "a1a76957d246ab8ace82fca130f895de",
-    "url": "/earthsea/static/js/2.630094b0.chunk.js.LICENSE.txt"
+    "url": "/earthsea/static/js/2.681376f4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7fd353da4af5c309731e",
-    "url": "/earthsea/static/js/main.53895943.chunk.js"
+    "revision": "2cbdc5db32e8f297f72f",
+    "url": "/earthsea/static/js/main.deb4db0d.chunk.js"
   },
   {
     "revision": "2695fe1bfb227b25cd74",
