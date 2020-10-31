@@ -1,27 +1,26 @@
 {
   "files": {
-    "main.css": "/earthsea/static/css/main.d5df95f8.chunk.css",
-    "main.js": "/earthsea/static/js/main.6503a3e9.chunk.js",
-    "main.js.map": "/earthsea/static/js/main.6503a3e9.chunk.js.map",
+    "main.css": "/earthsea/static/css/main.313060b7.chunk.css",
+    "main.js": "/earthsea/static/js/main.53895943.chunk.js",
+    "main.js.map": "/earthsea/static/js/main.53895943.chunk.js.map",
     "runtime-main.js": "/earthsea/static/js/runtime-main.7766a2f0.js",
     "runtime-main.js.map": "/earthsea/static/js/runtime-main.7766a2f0.js.map",
     "static/css/2.626e4169.chunk.css": "/earthsea/static/css/2.626e4169.chunk.css",
-    "static/js/2.c0c54f2a.chunk.js": "/earthsea/static/js/2.c0c54f2a.chunk.js",
-    "static/js/2.c0c54f2a.chunk.js.map": "/earthsea/static/js/2.c0c54f2a.chunk.js.map",
+    "static/js/2.630094b0.chunk.js": "/earthsea/static/js/2.630094b0.chunk.js",
+    "static/js/2.630094b0.chunk.js.map": "/earthsea/static/js/2.630094b0.chunk.js.map",
     "index.html": "/earthsea/index.html",
-    "precache-manifest.e83985b909766a7e30188f6362610437.js": "/earthsea/precache-manifest.e83985b909766a7e30188f6362610437.js",
+    "precache-manifest.adf4f2b629f46d24eceed04857ff601a.js": "/earthsea/precache-manifest.adf4f2b629f46d24eceed04857ff601a.js",
     "service-worker.js": "/earthsea/service-worker.js",
     "static/css/2.626e4169.chunk.css.map": "/earthsea/static/css/2.626e4169.chunk.css.map",
-    "static/css/main.d5df95f8.chunk.css.map": "/earthsea/static/css/main.d5df95f8.chunk.css.map",
-    "static/js/2.c0c54f2a.chunk.js.LICENSE.txt": "/earthsea/static/js/2.c0c54f2a.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/earthsea/static/media/img3.2a8cdbf4.jpg",
-    "static/media/ziemiomorze.jpg": "/earthsea/static/media/ziemiomorze.4cdf0c52.jpg"
+    "static/css/main.313060b7.chunk.css.map": "/earthsea/static/css/main.313060b7.chunk.css.map",
+    "static/js/2.630094b0.chunk.js.LICENSE.txt": "/earthsea/static/js/2.630094b0.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/earthsea/static/media/img3.2a8cdbf4.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.7766a2f0.js",
     "static/css/2.626e4169.chunk.css",
-    "static/js/2.c0c54f2a.chunk.js",
-    "static/css/main.d5df95f8.chunk.css",
-    "static/js/main.6503a3e9.chunk.js"
+    "static/js/2.630094b0.chunk.js",
+    "static/css/main.313060b7.chunk.css",
+    "static/js/main.53895943.chunk.js"
   ]
 }
