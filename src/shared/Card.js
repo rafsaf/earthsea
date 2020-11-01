@@ -1,42 +1,59 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
+import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function MyCard(props) {
     const small = props.small ? 'px-1 py-2 my-2 col-6 col-md-3 col-xl-2' : null
     const fullWidth = props.fullWidth ? ' my-2 col-6 col-lg-12 ' : null
     const homeWidth = props.homeWidth ? 'px-1 py-2 my-2 col-6 col-lg-3' : null
     let cardClass
+    let constHeight
     if (small) {
         cardClass = small
+        constHeight = false
     } else if (fullWidth) {
         cardClass = fullWidth
+        constHeight = false
     } else if (homeWidth) {
         cardClass = homeWidth
+        constHeight = true
     }
 
     return (
         <Card className={cardClass}>
             <Card.Header style={{backgroundColor: 'white', color: 'black', height: '5rem' }}><h1 className='title'>{props.title}</h1></Card.Header>
             <Card.Body style={{paddingLeft: '1vh', paddingRight: '0'}}>
-                <Card.Title></Card.Title>
-                <Card.Text>
-                    <blockquote className="blockquote" >
-                        <footer className="blockquote-footer">
-                            {props.description}
-                        </footer>
-                    </blockquote>
-                    <Card.Link as={Link} to={'/' + props.slug}>Czytaj dalej...</Card.Link>
-                </Card.Text>
-
-            </Card.Body>
-            <div className='text-center' >
-            {props.image ?
-            <img className='cardImage'  src={props.image} />
+            {constHeight ?
+            <div className='text-center'>
+                {props.image ?
+            <img className='cardImage rounded'  src={props.image} />
             :
             <span></span>
             }
             </div>
+            :
+            <div className='text-center'>
+                {props.image ?
+            <img className='cardImage rounded'  src={props.image} />
+            :
+            <span></span>
+            }
+            </div>
+            }
+            
+                <div>
+                    <blockquote className="blockquote mt-3" >
+                        <footer className="blockquote-footer">
+                            {props.description}
+                        </footer>
+                    </blockquote>
+                    <FontAwesomeIcon color='#002a32' icon={faAngleDoubleRight}  /> <Card.Link className='read-more' as={Link} to={'/' + props.slug}>Czytaj dalej...</Card.Link>
+                </div>
+
+            </Card.Body>
+
 
         </Card>
     )

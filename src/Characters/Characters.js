@@ -45,7 +45,7 @@ export default function Characters() {
 
             <Row className='justify-content-center'>
             <Col xs={12} lg={11} xl={10}>
-            <TextField onChange={(e)=>searchSpace(e)} className='mx-1 mt-4 mb-2' style={{width: '99%'}} size='large' id="standard-basic" label="Tutaj wpisz szukaną frazę..." />
+            <TextField onChange={(e)=>searchSpace(e)} className='mx-1 mt-4 mb-2' style={{width: '99%'}} id="standard-basic" label="Tutaj wpisz szukaną frazę..." />
             <RadioGroup handleChange={handleChange} />
             <Row className='justify-content-center mx-1'>
                 

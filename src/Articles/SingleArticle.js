@@ -277,7 +277,12 @@ class RichEditorExample extends React.Component {
         );}
         return (
             <div>
-                <div className='text-left'>
+                <div className='row'>
+
+                    <div className='col'>
+                    <div className='text-left'>
+                
+                    <div>
                 {
                     this.props.confirm ?
                     <FontAwesomeIcon color='green' icon={faCheckCircle}  />
@@ -295,11 +300,24 @@ class RichEditorExample extends React.Component {
                 :
                 <span style={{color:'red'}} className='small ml-1'>Artykuł niezweryfikowany</span>
                 }
+                </div>
                 <Select onChange={this.props.onChange} allVersions={this.props.allVersions} />
-                <p>Dodany przez: {this.props.author}</p>
                 
+                
+                </div>
+                    </div>
+                    <div className='col-auto'>
+                    <div className='text-left'>
+                
+
+                    <button className='btn btn-default'>
+                    {this.props.like} <FontAwesomeIcon color='blue' icon={faThumbsUp}  />
+                </button>
+                <button className='btn btn-default mr-1'>
+                {this.props.unlike} <FontAwesomeIcon color='black' icon={faThumbsDown}  />
+                </button>
                 <button 
-                className='btn btn-primary btn-sm mr-1'
+                className='btn btn-primary btn-sm'
                  onClick={() => 
                  {this.setState(
                     {
@@ -308,20 +326,16 @@ class RichEditorExample extends React.Component {
                  )}}>
                         Edytuj
                     </button>
-                    <button className='btn btn-default mr-1'>
-                    {this.props.like} <FontAwesomeIcon color='blue' icon={faThumbsUp}  />
-                </button>
-                <button className='btn btn-default mr-1'>
-                {this.props.unlike} <FontAwesomeIcon color='black' icon={faThumbsDown}  />
-                </button>
-                
                 </div>
+                    </div>
+                </div>
+
                 <div>
-                    <h1 className='mt-4'>{this.props.title} </h1>
+                    <h1 className='mt-2'>{this.props.title} </h1>
 
 
                 </div>
-                    <div className='my-5'>
+                    <div className='my-2'>
                     {
                     this.props.imageConfirm ?
                     <figure className="figure">

@@ -17,9 +17,9 @@ export default function RadioButtonsGroup(props) {
       <div className='my-3 mx-1'>
     <FormControl component="fieldset">
       <RadioGroup row aria-label="filter" name="filter" value={value} onChange={handleChange}>
-        <FormControlLabel value="all" control={<Radio />} label="Szukaj wszędzie" />
-        <FormControlLabel value="title" control={<Radio />} label="Tylko tytuły" />
-        <FormControlLabel value="description" control={<Radio />} label="Tylko opisy" />
+        <FormControlLabel value="all" control={<Radio color='primary'/>} label="Szukaj wszędzie" />
+        <FormControlLabel value="title" control={<Radio color='primary'/>} label="Tylko tytuły" />
+        <FormControlLabel value="description" control={<Radio color='primary'/>} label="Tylko opisy" />
        
         
       </RadioGroup>

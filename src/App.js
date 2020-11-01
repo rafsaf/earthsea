@@ -22,7 +22,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function Footer() {
   const PartText = (
     <div style={{
-        paddingTop: '10%'
+        paddingTop: '10%',
+      
     }}>
         Znajdź nas na Facebooku i podziel się uwagami<br />
         <div className='text-center'>
@@ -43,7 +44,7 @@ function Footer() {
     
   
   )
-  return (<footer>
+  return (<footer className='mt-5'>
     
         <Part height='300px' font='normal' background='#002a32' left={PartText} lg={5} />
 

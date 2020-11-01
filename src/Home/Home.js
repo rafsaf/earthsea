@@ -30,7 +30,7 @@ export default function Home() {
 
                     <Col xs={12} xl={{span:8, offset:1}}>
                         <Row className='py-2 justify-content-center'
-                >
+                        >
                         {articles.map(row => (
                             <MyCard 
                             homeWidth
