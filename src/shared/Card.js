@@ -24,7 +24,7 @@ export default function MyCard(props) {
     return (
         <Card className={cardClass}>
             <Card.Header style={{backgroundColor: 'white', color: 'black', height: '5rem' }}><h1 className='title'>{props.title}</h1></Card.Header>
-            <Card.Body style={{paddingLeft: '1vh', paddingRight: '0'}}>
+            <Card.Body style={{paddingLeft: '0', paddingRight: '0'}}>
             {constHeight ?
             <div className='text-center'>
                 {props.image ?
@@ -43,7 +43,7 @@ export default function MyCard(props) {
             </div>
             }
             
-                <div>
+                <div style={{paddingLeft: '1vh', paddingRight: '0'}}>
                     <blockquote className="blockquote mt-3" >
                         <footer className="blockquote-footer">
                             {props.description}
