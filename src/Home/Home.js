@@ -12,7 +12,7 @@ export default function Home() {
     const PartOneRight = (
         <div className='ursula py-4'>
             
-            Blog poświęcony uniwersum Ziemiomorza autorstwa Ursuli Le Guin.
+            Encyklopedia uniwersum Ziemiomorza autorstwa Ursuli Le Guin.
         </div>
     )
     const [articles, setArticles] = useState(Data)

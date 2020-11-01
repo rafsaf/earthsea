@@ -7,6 +7,7 @@ import Data from '../fake'
 import MyCard from '../shared/Card'
 import Part from '../shared/Part'
 import RadioGroup from '../shared/radioGroup'
+import CheckboxGroup from '../shared/checkboxGroup'
 
 
 export default function Characters() {
@@ -43,8 +44,11 @@ export default function Characters() {
         <Container fluid style={{minHeight:'80vh'}}>
             
 
-            <Row className='justify-content-center'>
-            <Col xs={12} lg={11} xl={10}>
+            <Row className='justify-content-start'>
+            <Col xs='auto'>
+                <CheckboxGroup />
+            </Col>
+            <Col xs='auto' lg={10}>
             <TextField onChange={(e)=>searchSpace(e)} className='mx-1 mt-4 mb-2' style={{width: '99%'}} id="standard-basic" label="Tutaj wpisz szukaną frazę..." />
             <RadioGroup handleChange={handleChange} />
             <Row className='justify-content-center mx-1'>
