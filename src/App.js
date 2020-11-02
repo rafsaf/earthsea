@@ -14,9 +14,7 @@ import NewArticle from './NewArticle/NewArticle'
 import Characters from './Characters/Characters'
 import Places from './Places/Places'
 import SingleArticle from './Articles/SingleArticle'
-import {
-  faFacebook,
-} from "@fortawesome/free-brands-svg-icons";
+import {faFacebook} from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Footer() {
@@ -76,10 +74,10 @@ export default function App() {
           <Nav className="mx-auto">
             
             <Nav.Link className='nav-link' as={Link} to="/home">ZIEMIOMORZE</Nav.Link>
-            <Nav.Link className='nav-link' as={Link} to="/postacie">POSTACIE</Nav.Link>
-            <Nav.Link className='nav-link' as={Link} to="/miejsca">MIEJSCA</Nav.Link>
+            <Nav.Link className='nav-link' as={Link} to="/swiat">ŚWIAT PRZEDSTAWIONY</Nav.Link>
             <Nav.Link className='nav-link' as={Link} to="/artykuly">ARTYKUŁY</Nav.Link>
-            <Nav.Link as={Link} to="/dodaj">DODAJ STRONĘ</Nav.Link>
+            <Nav.Link className='nav-link' as={Link} to="/wsparcie">WSPARCIE</Nav.Link>
+            <Nav.Link className='nav-link' as={Link} to="/dodaj">DODAJ STRONĘ</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -87,8 +85,8 @@ export default function App() {
         
       <Route exact path="/" component={Home} />
       <Route path="/home" component={Home} />
-      <Route path="/postacie" component={Characters} />
-      <Route path="/miejsca" component={Places} />
+      <Route path="/swiat" component={Characters} />
+      <Route path="/wsparcie" component={Places} />
       <Route path="/artykuly" component={Articles} />
       <Route path="/dodaj" component={NewArticle} />
       <Route path="/:topicName" component={SingleArticle} />
