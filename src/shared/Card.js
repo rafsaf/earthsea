@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
 import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from '../img/cool.png'
 
 export default function MyCard(props) {
     const small = props.small ? 'px-1 py-2 my-2 col-6 col-md-3 col-xl-2' : null
@@ -22,8 +23,11 @@ export default function MyCard(props) {
     }
 
     return (
-        <Card className={cardClass}>
-            <Card.Header style={{backgroundColor: 'white', color: 'black', height: '5rem' }}><h1 className='title'>{props.title}</h1></Card.Header>
+        <Card className={cardClass} style={{
+            backgroundImage: `url(${Image})`,
+            
+        }}>
+            <Card.Header style={{backgroundImage: `url(${Image})`, color: 'black', height: '5rem' }}><h1 className='title'>{props.title}</h1></Card.Header>
             <Card.Body style={{paddingLeft: '0', paddingRight: '0'}}>
             {constHeight ?
             <div className='text-center'>
@@ -44,8 +48,8 @@ export default function MyCard(props) {
             }
             
                 <div style={{paddingLeft: '1vh', paddingRight: '0'}}>
-                    <blockquote className="blockquote mt-3" >
-                        <footer className="blockquote-footer">
+                    <blockquote className="blockquote mt-2" >
+                        <footer className="blockquote-footer" style={{color: 'revert'}}>
                             {props.description}
                         </footer>
                     </blockquote>

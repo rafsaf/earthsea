@@ -15,6 +15,7 @@ import 'draft-js/dist/Draft.css';
 import { faThumbsUp, faThumbsDown, faTimesCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Container from 'react-bootstrap/Container'
+import Image from '../img/cool2.png'
 
 export default function NewArticle() {
     let { topicName } = useParams();
@@ -54,11 +55,11 @@ export default function NewArticle() {
 
         return (
             
-            <div id='new article' style={{ paddingTop: '2%' }}>
+            <div id='new article' style={{ paddingTop: '2%', backgroundImage: `url(${Image})` }}>
                 <Container fluid>
                 {article ?
                 
-                <Part height='80vh' lg={6} color='rgb(77, 76, 76)' background='white' left={
+                <Part height='80vh' lg={6} color='rgb(77, 76, 76)' background='none' left={
                     <RichEditorExample
                     onChange={handleClick}
                     allVersions={allVersions}

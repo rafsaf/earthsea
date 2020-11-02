@@ -20,20 +20,26 @@ export default function CheckboxesGroup(props) {
   
   return (
     <div className="">
+        
       <FormControl component="fieldset" className="">
-        <FormLabel component="legend">Assign responsibility</FormLabel>
+        <FormLabel component="legend"> {props.search}</FormLabel>
+        <p className='title'>Kategorie</p>
         <FormGroup>
+          <FormControlLabel
           
+            key={props.allCheck.name}
+            control={<Checkbox size='small' color='primary' checked={props.allCheck.isChecked} onChange={props.handleAllCategoryChange} name={props.allCheck.name} />}
+            label={props.allCheck.label}
+            />
           {props.categories.map(row => (
             <FormControlLabel
             key={row.name}
-            control={<Checkbox color='primary' checked={row.isChecked} onChange={props.handleCategoryChange} name={row.name} />}
-            label={row.name}
-        />
+            control={<Checkbox size='small' color='primary' checked={row.isChecked} onChange={props.handleCategoryChange} name={row.name} />}
+            label={row.label}
+            />
           ))}
 
         </FormGroup>
-        <FormHelperText>Be careful</FormHelperText>
       </FormControl>
     </div>
   )}

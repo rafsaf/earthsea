@@ -34,10 +34,10 @@ export default function Part(props) {
         </Row>
         </div>
         <div className='text-center d-block d-lg-none px-2'>
-            <div className='pt-5'>
+            <div >
             {left}
             </div>
-            <div className='py-5'>
+            <div >
             {right}
             </div>
             

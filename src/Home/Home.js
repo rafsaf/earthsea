@@ -5,12 +5,14 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Data from '../fake'
+// import Image from '../img/cool.png'
+import Image from '../img/cool2.png'
 
 
 export default function Home() {
     const width = window.innerWidth
     const PartOneRight = (
-        <div className='ursula py-4'>
+        <div className='ursula py-3'>
             
             Encyklopedia uniwersum Ziemiomorza autorstwa Ursuli Le Guin.
         </div>
@@ -23,9 +25,9 @@ export default function Home() {
             <Part Image size='larger' height='100px' right={PartOneRight} />
 
             <Container fluid style={{
-                
-                backgroundColor: 'white'
-            }}>
+                    backgroundImage: `url(${Image})`,
+                    
+                }}>
                 <Row className=' mx-1 py-3 justify-content-center'>
 
                     <Col xs={12} xl={{span:8, offset:1}}>

@@ -42,7 +42,7 @@ function Footer() {
     
   
   )
-  return (<footer className='mt-5'>
+  return (<footer>
     
         <Part height='300px' font='normal' background='#002a32' left={PartText} lg={5} />
 
@@ -76,7 +76,7 @@ export default function App() {
             <Nav.Link className='nav-link' as={Link} to="/home">ZIEMIOMORZE</Nav.Link>
             <Nav.Link className='nav-link' as={Link} to="/swiat">ŚWIAT PRZEDSTAWIONY</Nav.Link>
             <Nav.Link className='nav-link' as={Link} to="/artykuly">ARTYKUŁY</Nav.Link>
-            <Nav.Link className='nav-link' as={Link} to="/wsparcie">WSPARCIE</Nav.Link>
+            
             <Nav.Link className='nav-link' as={Link} to="/dodaj">DODAJ STRONĘ</Nav.Link>
           </Nav>
         </Navbar.Collapse>
@@ -86,7 +86,6 @@ export default function App() {
       <Route exact path="/" component={Home} />
       <Route path="/home" component={Home} />
       <Route path="/swiat" component={Characters} />
-      <Route path="/wsparcie" component={Places} />
       <Route path="/artykuly" component={Articles} />
       <Route path="/dodaj" component={NewArticle} />
       <Route path="/:topicName" component={SingleArticle} />

@@ -12,6 +12,8 @@ export default
         
         "slug": "ged",
 
+        "category": "Postacie",
+
         "description": "Jeden z głownych bohaterów cyklu, potężny czarnoksiężnik, późniejszy Arcymag Ziemiomorza oraz Władca Smoków znany jako Krogulec lub Jastrząb, pochodził z wyspy Gont.",
 
         "author": "Rafał Safin",
@@ -46,6 +48,8 @@ export default
         "title": "Ursula Le Guin",
         
         "slug": "ursula-le-guin",
+
+        "category": "Inne",
 
         "description": "Pisarka, autorka cyklu",
 
@@ -82,6 +86,8 @@ export default
         
         "slug": "tenar",
 
+        "category": "Postacie",
+
         "description": "Tenar od pierścienia, 'biała kobieta' pochodząca z wyspy Kargard, w młodości najwyższa kapłanka Atuanu.",
 
         "author": "Rafał Safin",
@@ -116,6 +122,8 @@ export default
         "title": "Gont",
         
         "slug": "gont",
+
+        "category": "Miejsca",
 
         "description": "Jedna z wysp ziemiomorza, pochodzili z niej między innymi Arcymag Ged, Ogion Milczący.",
 
@@ -152,6 +160,8 @@ export default
         
         "slug": "roke",
 
+        "category": "Miejsca",
+
         "description": "Wyspa w centrum ziemiomorze, znajduje się na niej najsłynniejsza szkoła magii w Ziemiomorzu.",
 
         "author": "Rafał Safin",
@@ -186,6 +196,8 @@ export default
         "title": "Havnor",
         
         "slug": "havnor",
+
+        "category": "Miejsca",
 
         "description": "Wyspa w centrum Ziemiomorza, stolica Królestwa.",
 
