@@ -15,14 +15,14 @@ import 'draft-js/dist/Draft.css';
 import { faThumbsUp, faThumbsDown, faTimesCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Container from 'react-bootstrap/Container'
-import Image from '../img/cool2.png'
+import Image from '../img/cool.png'
 
 export default function NewArticle() {
     let { topicName } = useParams();
     const [article, setArticle] = useState()
     const [version, setVersion] = useState()
     const [allVersions, setAllVersions] = useState()
-    const [articleError, setArticleError] = useState(null)
+    const [articleError, setArticleError] = useState(true)
 
     const fetchArticle = () => {
         setArticle(Data[0])
@@ -55,9 +55,9 @@ export default function NewArticle() {
 
         return (
             
-            <div id='new article' style={{ paddingTop: '', backgroundImage: `url(${Image})` }}>
-                <Container fluid>
-                {article ?
+            <div className='container-fluid' id='new article' style={{ paddingTop: '', backgroundImage: `url(${Image})` }}>
+                
+                {!articleError ?
                 
                 <Part height='20' lg={6} color='rgb(77, 76, 76)' background='none' left={
                     <RichEditorExample
@@ -78,9 +78,10 @@ export default function NewArticle() {
                 } /> 
 
                 : 
-                <div className='text-center'>
+                <div className='text-center pt-4' style={{height:'80vh'}}>
 
                 <Error
+                
                 show={articleError}
                 onExit={() => {
                     setArticleError(false);
@@ -90,7 +91,7 @@ export default function NewArticle() {
                 </div>
 
                 }
-                </Container>
+                
             </div>
         )
     }
@@ -340,7 +341,7 @@ class RichEditorExample extends React.Component {
                     
                     </div>
                     <div className='row justify-content-center'>
-                    <div className='col-12 col-md-10 col-lg-7'>
+                    <div className='col-12 col-md-8 offset-md-1 col-lg-7 offset-lg-2'>
                 <div className="RichEditor-editor mb-5">
                     <Editor
                         blockStyleFn={getBlockStyle}
@@ -352,11 +353,11 @@ class RichEditorExample extends React.Component {
                         />
                 </div>
                 </div>
-                <div className='col-3'>
+                <div className='col-md-2 col-lg-3 d-none d-md-block'>
                 {
                     this.props.imageConfirm ?
                     <figure className="figure">
-                    <img style={{height: 300}} src={this.props.image} alt='title' />
+                    <img className="img-fluid" src={this.props.image} alt='title' />
                     <figcaption className="figure-caption">Źródło: {this.props.source ? this.props.source : 'Nieznane'}</figcaption>
                     </figure>
                     :
