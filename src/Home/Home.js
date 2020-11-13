@@ -12,7 +12,7 @@ import Image from '../img/cool2.png'
 export default function Home() {
     const width = window.innerWidth
     const PartOneRight = (
-        <div className='ursula py-3'>
+        <div className='ursula'>
             
             Encyklopedia uniwersum Ziemiomorza autorstwa Ursuli Le Guin.
         </div>

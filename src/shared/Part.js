@@ -14,35 +14,23 @@ export default function Part(props) {
     const size = props.size ? props.size : 'normal'
     
     return (
-        <div style={{
+        <table style={{
+            width: '100%',
             fontSize: size,
             minHeight: height, 
             color: color,
             backgroundColor: background,
             backgroundImage: background2,
             fontFamily: font,
-        }}>
-        <div className='d-none d-lg-block'>
-        <Row className='w-100 justify-content-center text-center'>
-        <Col lg={lg} md={8} className='my-auto'>
+        }} className='text-center'>
+            <tbody>
+                <tr className="align-middle">
+                    <td>
             {left}
-        </Col>
-        <Col lg={'auto'} className='my-auto'>
-                {right}
-            
-        </Col>
-        </Row>
-        </div>
-        <div className='text-center d-block d-lg-none px-2'>
-            <div >
-            {left}
-            </div>
-            <div >
             {right}
-            </div>
-            
-            
-        </div>
-        </div>
+            </td>
+            </tr>
+            </tbody>
+        </table>
     )
 }

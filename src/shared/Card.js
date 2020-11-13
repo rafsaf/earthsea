@@ -27,8 +27,12 @@ export default function MyCard(props) {
             backgroundImage: `url(${Image})`,
             
         }}>
-            <Card.Header style={{backgroundImage: `url(${Image})`, color: 'black', height: '5rem' }}><h1 className='title'>{props.title}</h1></Card.Header>
+            <Card.Header style={{backgroundImage: `url(${Image})`, color: 'black', height: '5rem' }}>
+                <h1 className='title'>{props.title}</h1>
+                
+                </Card.Header>
             <Card.Body style={{paddingLeft: '0', paddingRight: '0'}}>
+                
             {constHeight ?
             <div className='text-center'>
                 {props.image ?
@@ -55,7 +59,7 @@ export default function MyCard(props) {
                     </blockquote>
                     <FontAwesomeIcon color='#002a32' icon={faAngleDoubleRight}  /> <Card.Link className='read-more' as={Link} to={'/' + props.slug}>Czytaj dalej...</Card.Link>
                 </div>
-
+                
             </Card.Body>
 
 

@@ -31,7 +31,7 @@ export default function Characters() {
     const [search, setSearch] = useState(null)
 
     const PartOne = (
-        <div className='ursula py-3'>
+        <div className='ursula'>
             Świat przedstawiony
         </div>
     )

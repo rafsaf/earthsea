@@ -22,7 +22,7 @@ function Footer() {
     <div style={{
         paddingTop: '10%',
       
-    }}>
+    }} className="col-12 col-md-9 col-lg-6 mx-auto">
         Znajdź nas na Facebooku i podziel się uwagami<br />
         <div className='text-center'>
             <span className='badge badge-light btn-block my-2'>

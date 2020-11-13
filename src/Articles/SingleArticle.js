@@ -96,7 +96,7 @@ export default function NewArticle() {
     }
     return (
         <Part left={
-            <div style={{ paddingTop: '5%' }}>
+            <div>
                 <h3>{topicName}</h3>
                 <h3>Nie znaleziono artukułu o takiej nazwie!</h3>
                 <p>Upewnij się że podany adres url jest poprawny oraz czy materiał nie został usunięty.</p>
