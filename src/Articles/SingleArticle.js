@@ -55,11 +55,11 @@ export default function NewArticle() {
 
         return (
             
-            <div id='new article' style={{ paddingTop: '2%', backgroundImage: `url(${Image})` }}>
+            <div id='new article' style={{ paddingTop: '', backgroundImage: `url(${Image})` }}>
                 <Container fluid>
                 {article ?
                 
-                <Part height='80vh' lg={6} color='rgb(77, 76, 76)' background='none' left={
+                <Part height='20' lg={6} color='rgb(77, 76, 76)' background='none' left={
                     <RichEditorExample
                     onChange={handleClick}
                     allVersions={allVersions}
@@ -278,9 +278,9 @@ class RichEditorExample extends React.Component {
         );}
         return (
             <div>
-                <div className='row'>
+                
 
-                    <div className='col'>
+                    <div className='col-12 col-md-9 col-lg-6 mx-auto'>
                     <div className='text-left'>
                 
                     <div>
@@ -305,10 +305,8 @@ class RichEditorExample extends React.Component {
                 <Select onChange={this.props.onChange} allVersions={this.props.allVersions} />
                 
                 
-                </div>
-                    </div>
-                    <div className='col-auto'>
-                    <div className='text-left'>
+                
+                    
                 
 
                     <button className='btn btn-default'>
@@ -327,30 +325,22 @@ class RichEditorExample extends React.Component {
                  )}}>
                         Edytuj
                     </button>
-                </div>
                     </div>
-                </div>
+                    </div>
+                
 
                 <div>
-                    <h1 className='mt-2'>{this.props.title} </h1>
+                    <h1 style={{fontSize: 60}} className='my-4'>{this.props.title} </h1>
 
 
                 </div>
-                    <div className='my-2'>
-                    {
-                    this.props.imageConfirm ?
-                    <figure className="figure">
-                    <img className='img-fluid' src={this.props.image} alt='title' />
-                    <figcaption className="figure-caption">Źródło: {this.props.source ? this.props.source : 'Nieznane'}</figcaption>
-                    </figure>
-                    :
-                    <div>
-                    <figcaption className="figure-caption">Zdjęcie niezwerfikowane.</figcaption>
+                    <div className='my-1' style={{
+                        
+                    }}>
+                    
                     </div>
-
-                    }
-                    </div>
-
+                    <div className='row justify-content-center'>
+                    <div className='col-12 col-md-10 col-lg-7'>
                 <div className="RichEditor-editor mb-5">
                     <Editor
                         blockStyleFn={getBlockStyle}
@@ -361,6 +351,23 @@ class RichEditorExample extends React.Component {
                         onChange ={ (editorState) => this.setState({editorState})}
                         />
                 </div>
+                </div>
+                <div className='col-3'>
+                {
+                    this.props.imageConfirm ?
+                    <figure className="figure">
+                    <img style={{height: 300}} src={this.props.image} alt='title' />
+                    <figcaption className="figure-caption">Źródło: {this.props.source ? this.props.source : 'Nieznane'}</figcaption>
+                    </figure>
+                    :
+                    <div>
+                    <figcaption className="figure-caption">Zdjęcie niezwerfikowane.</figcaption>
+                    </div>
+
+                    }
+                </div>
+                </div>
+                
         </div>
         )
     }
