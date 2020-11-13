@@ -7,7 +7,6 @@ export default function Part(props) {
     const color = props.color ? props.color : 'white'
     const background = props.background ? props.background : '#1C7C73'
     const background2 = props.Image ? 'linear-gradient(90deg, rgba(0,42,50,1) 0%, rgba(9,100,121,1) 66%, rgba(26,151,161,1) 100%)' : 'none'
-    const lg = props.lg ? props.lg : 'auto'
     const font = props.font ? props.font : 'Oswald, sans-serif'
     const left = props.left
     const right = props.right

@@ -26,7 +26,7 @@ export default function GroupedSelect(props) {
   }
 
   return (
-    <div>
+    <div className='w-100'>
       <FormControl className={classes.formControl}>
         <InputLabel htmlFor="grouped-native-select">Wersje artykułu</InputLabel>
         <Select value={value} onChange={handleChange} native id="grouped-native-select">

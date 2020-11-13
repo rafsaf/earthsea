@@ -55,11 +55,10 @@ export default function NewArticle() {
 
         return (
             
-            <div className='container-fluid' id='new article' style={{ paddingTop: '', backgroundImage: `url(${Image})` }}>
+            <div className='container-fluid' id='new article' style={{ paddingTop: '', backgroundImage: `url(${Image})`, fontFamily: 'Oswald, sans-serif' }}>
                 
                 {!articleError ?
                 
-                <Part height='20' lg={6} color='rgb(77, 76, 76)' background='none' left={
                     <RichEditorExample
                     onChange={handleClick}
                     allVersions={allVersions}
@@ -75,7 +74,6 @@ export default function NewArticle() {
                     author={article.author}
                     source={article.source} 
                     />
-                } /> 
 
                 : 
                 <div className='text-center pt-4' style={{height:'80vh'}}>
@@ -330,7 +328,7 @@ class RichEditorExample extends React.Component {
                     </div>
                 
 
-                <div>
+                <div className='text-center'>
                     <h1 style={{fontSize: 60}} className='my-4'>{this.props.title} </h1>
 
 
@@ -341,7 +339,7 @@ class RichEditorExample extends React.Component {
                     
                     </div>
                     <div className='row justify-content-center'>
-                    <div className='col-12 col-md-8 offset-md-1 col-lg-7 offset-lg-2'>
+                    <div className='col-11 col-md-8 offset-md-1 col-lg-7 offset-lg-2'>
                 <div className="RichEditor-editor mb-5">
                     <Editor
                         blockStyleFn={getBlockStyle}
@@ -353,7 +351,9 @@ class RichEditorExample extends React.Component {
                         />
                 </div>
                 </div>
-                <div className='col-md-2 col-lg-3 d-none d-md-block'>
+                
+                <div className='col-3'>
+                <div className='d-none d-lg-block'>
                 {
                     this.props.imageConfirm ?
                     <figure className="figure">
@@ -368,6 +368,8 @@ class RichEditorExample extends React.Component {
                     }
                 </div>
                 </div>
+                </div>
+                
                 
         </div>
         )

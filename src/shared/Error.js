@@ -19,7 +19,7 @@ export default function Error(props) {
             
           </p>
           
-          <Button onClick={props.onExit} variant="outline-primary">
+          <Button onClick={props.onExit} variant="outline-info">
             Spróbuj ponownie
           </Button>
         
