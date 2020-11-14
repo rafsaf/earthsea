@@ -189,7 +189,7 @@ class RichEditorExample extends React.Component {
         }
         if (this.state.editMode) {
         return (
-            <div>
+            <div className='col-12 col-lg-7 mx-auto'>
 
                 <div className="RichEditor-root">
                 <div className='text-right'>
