@@ -1,6 +1,6 @@
 
-import React, {useState, useEffect} from 'react';
-import {useParams,} from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useParams, } from "react-router-dom";
 import Part from '../shared/Part'
 import Error from '../shared/Error'
 import Data from '../fake'
@@ -19,10 +19,10 @@ import Image from '../img/cool.png'
 
 export default function NewArticle() {
     let { topicName } = useParams();
-    const [article, setArticle] = useState()
-    const [version, setVersion] = useState()
-    const [allVersions, setAllVersions] = useState()
-    const [articleError, setArticleError] = useState(true)
+    const [article, setArticle] = useState(Data[0])
+    const [version, setVersion] = useState(Ver[0])
+    const [allVersions, setAllVersions] = useState(Ver)
+    const [articleError, setArticleError] = useState(false)
 
     const fetchArticle = () => {
         setArticle(Data[0])
@@ -35,61 +35,66 @@ export default function NewArticle() {
 
     useEffect(
         () => {
-        fetchArticle()
-    }, []
+            fetchArticle()
+        }, []
     )
 
     useEffect(
         () => {
-        fetchVersions()
-    }, []
+            fetchVersions()
+        }, []
     )
 
     const handleClick = (id) => {
-        const current = allVersions.filter((row)=>row.id===parseInt(id))
-        
+        const current = allVersions.filter((row) => row.id === parseInt(id))
+
         setVersion(current[0])
     }
 
     if (articleError !== 'notFound') {
-
+        
         return (
-            
-            <div className='container-fluid' id='new article' style={{ paddingTop: '', backgroundImage: `url(${Image})`, fontFamily: 'Oswald, sans-serif' }}>
+
+            <div className='container-fluid' id='new article' style={
+                { 
+                paddingTop: '', backgroundImage: `url(${Image})`, fontFamily: 'Oswald, sans-serif',
                 
+                }
+                }>
+                <div style={{marginRight: 0, marginLeft: -5}}>
                 {!articleError ?
-                
+
                     <RichEditorExample
-                    onChange={handleClick}
-                    allVersions={allVersions}
-                    title={article.title}
-                    created={article.created}
-                    lastModified={version.created}
-                    image={article.image}
-                    text={version.text}
-                    like={article.like}
-                    confirm={version.confirm}
-                    imageConfirm={article.image_confirm}
-                    unlike={article.unlike}
-                    author={article.author}
-                    source={article.source} 
+                        onChange={handleClick}
+                        allVersions={allVersions}
+                        title={article.title}
+                        created={article.created}
+                        lastModified={version.created}
+                        image={article.image}
+                        text={version.text}
+                        like={article.like}
+                        confirm={version.confirm}
+                        imageConfirm={article.image_confirm}
+                        unlike={article.unlike}
+                        author={article.author}
+                        source={article.source}
                     />
 
-                : 
-                <div className='text-center pt-4' style={{height:'80vh'}}>
+                    :
+                    <div className='text-center pt-4' style={{ height: '80vh' }}>
 
-                <Error
-                
-                show={articleError}
-                onExit={() => {
-                    setArticleError(false);
-                    fetchArticle();
-                    }}>
-                </Error>
-                </div>
+                        <Error
+
+                            show={articleError}
+                            onExit={() => {
+                                setArticleError(false);
+                                fetchArticle();
+                            }}>
+                        </Error>
+                    </div>
 
                 }
-                
+                </div>
             </div>
         )
     }
@@ -126,30 +131,30 @@ class RichEditorExample extends React.Component {
     }
     onChange = editorState => {
         this.setState({
-          editorState
+            editorState
         });
-      };
-    
+    };
+
     componentDidUpdate(prevProps) {
         if (this.props.text !== prevProps.text) {
             this.blocks = convertFromHTML(this.props.text)
-            this.setState({editorState: EditorState.createWithContent(this.blocks)})
+            this.setState({ editorState: EditorState.createWithContent(this.blocks) })
         }
-    }v
+    } v
 
     handleKeyCommand = command => {
         const newState = RichUtils.handleKeyCommand(
-        this.state.editorState,
-        command
+            this.state.editorState,
+            command
         );
         if (newState) {
-        this.onChange(newState);
-        return "handled";
+            this.onChange(newState);
+            return "handled";
         }
         return "not-handled";
     };
 
-    
+
 
     _onTab(e) {
         const maxDepth = 4;
@@ -175,7 +180,7 @@ class RichEditorExample extends React.Component {
     }
 
     render() {
-        
+
         const { editorState } = this.state;
 
         // If the user changes block type before entering any text, we can
@@ -188,190 +193,193 @@ class RichEditorExample extends React.Component {
             }
         }
         if (this.state.editMode) {
-        return (
-            <div className='col-12 col-lg-7 mx-auto'>
+            return (
+                <div className='col-12 col-lg-7 mx-auto'>
 
-                <div className="RichEditor-root">
-                <div className='text-right'>
+                    <div className="RichEditor-root">
+                        <div className='text-right'>
 
-                <button className='btn btn-sm btn-outline-primary mb-5'
-                        onClick={() => {
+                            <button className='btn btn-sm btn-outline-primary mb-5'
+                                onClick={() => {
 
-                            alert(` HTML to Save ${convertToHTML(this.state.editorState.getCurrentContent())}`);
-                        }}
-                    >
-                        Zaproponuj zmiany i wyślij
+                                    alert(` HTML to Save ${convertToHTML(this.state.editorState.getCurrentContent())}`);
+                                }}
+                            >
+                                Zaproponuj zmiany i wyślij
               </button>
-                </div>
-                <div className='text-left'>
-                <button className='btn btn-sm btn-outline-primary mb-2'
-                        onClick={() => 
-                            {this.setState(
-                               {
-                               editMode: false,
-                               editorState: EditorState.createWithContent(this.blocks)
-                               }
-                            )}}
-                    >
-                        Powrót
+                        </div>
+                        <div className='text-left'>
+                            <button className='btn btn-sm btn-outline-primary mb-2'
+                                onClick={() => {
+                                    this.setState(
+                                        {
+                                            editMode: false,
+                                            editorState: EditorState.createWithContent(this.blocks)
+                                        }
+                                    )
+                                }}
+                            >
+                                Powrót
               </button>
-                <button className='btn btn-sm btn-outline-success mb-2 ml-2'
-                        onClick={() => 
-                            {
-                                const actualText = convertToHTML(this.state.editorState.getCurrentContent())
-                                localStorage.setItem(this.props.title, actualText)
-                                this.setState({saved : true})
-                                setTimeout(()=>{
-                                    this.setState({saved: false})
+                            <button className='btn btn-sm btn-outline-success mb-2 ml-2'
+                                onClick={() => {
+                                    const actualText = convertToHTML(this.state.editorState.getCurrentContent())
+                                    localStorage.setItem(this.props.title, actualText)
+                                    this.setState({ saved: true })
+                                    setTimeout(() => {
+                                        this.setState({ saved: false })
+                                    }
+                                        , 2000)
+                                }}
+                            >
+                                {this.state.saved ?
+                                    <span>Zapisano...</span>
+                                    :
+                                    <span>Zapisz zawartość lokalnie</span>
+
+
                                 }
-                                ,2000)
-                            }}
-                    >
-                        {this.state.saved ?
-                        <span>Zapisano...</span>
-                        :
-                        <span>Zapisz zawartość lokalnie</span>
-                        
-                        
-                        }
+                            </button>
+                            <button className='btn btn-sm btn-outline-success mb-2 ml-2'
+                                onClick={() => {
+                                    const savedText = convertFromHTML(
+                                        localStorage.getItem(this.props.title)
+                                    )
+                                    this.setState({ editorState: EditorState.createWithContent(savedText) })
+                                }}
+                            >
+                                Wczytaj zawartość
               </button>
-                <button className='btn btn-sm btn-outline-success mb-2 ml-2'
-                        onClick={() => 
-                            {
-                                const savedText = convertFromHTML(
-                                    localStorage.getItem(this.props.title)
-                                )
-                                this.setState({editorState: EditorState.createWithContent(savedText)})
-                            }}
-                    >
-                        Wczytaj zawartość
-              </button>
-                </div>
+                        </div>
 
-                    <BlockStyleControls
-                        editorState={editorState}
-                        onToggle={this.toggleBlockType}
-                    />
-                    <InlineStyleControls
-                        editorState={editorState}
-                        onToggle={this.toggleInlineStyle}
-                    />
-
-                    <div className={className} onClick={this.focus}>
-                        <Editor
-                            blockStyleFn={getBlockStyle}
-                            customStyleMap={styleMap}
+                        <BlockStyleControls
                             editorState={editorState}
-                            handleKeyCommand={this.handleKeyCommand}
-                            onChange={this.onChange}
-                            onTab={this.onTab}
-                            placeholder="Napisz coś..."
-                            ref="editor"
-                            plugins={[linkifyPlugin]}
-                            spellCheck={true}
+                            onToggle={this.toggleBlockType}
                         />
-                    </div>
+                        <InlineStyleControls
+                            editorState={editorState}
+                            onToggle={this.toggleInlineStyle}
+                        />
 
+                        <div className={className} onClick={this.focus}>
+                            <Editor
+                                blockStyleFn={getBlockStyle}
+                                customStyleMap={styleMap}
+                                editorState={editorState}
+                                handleKeyCommand={this.handleKeyCommand}
+                                onChange={this.onChange}
+                                onTab={this.onTab}
+                                placeholder="Napisz coś..."
+                                ref="editor"
+                                plugins={[linkifyPlugin]}
+                                spellCheck={true}
+                            />
+                        </div>
+
+                    </div>
                 </div>
-            </div>
-        );}
+            );
+        }
         return (
             <div>
-                
 
-                    <div className='col-12 col-md-9 col-lg-6 mx-auto'>
-                    <div className='text-left'>
-                
-                    <div>
-                {
-                    this.props.confirm ?
-                    <FontAwesomeIcon color='green' icon={faCheckCircle}  />
-                    :
-                    <FontAwesomeIcon color='red' icon={faTimesCircle}  />
-                }
-                {
-                    this.props.imageConfirm ?
-                    <FontAwesomeIcon color='green' icon={faCheckCircle}  />
-                    :
-                    <FontAwesomeIcon color='red' icon={faTimesCircle}  />
-                }
-                {this.props.confirm ?
-                <span></span>
-                :
-                <span style={{color:'red'}} className='small ml-1'>Artykuł niezweryfikowany</span>
-                }
+
+                <div className='col-12 mx-auto'>
+                    <div className='text-left py-1'>
+
+                        <div className='pb-1'>
+                            <button
+                                className='btn btn-primary btn-sm mr-1'
+                                onClick={() => {
+                                    this.setState(
+                                        {
+                                            editMode: true,
+                                        }
+                                    )
+                                }}>
+                                Edytuj
+                            </button>
+                            {
+                                this.props.confirm ?
+                                    <FontAwesomeIcon color='green' icon={faCheckCircle} />
+                                    :
+                                    <FontAwesomeIcon color='red' icon={faTimesCircle} />
+                            }
+                            {
+                                this.props.imageConfirm ?
+                                    <FontAwesomeIcon color='green' icon={faCheckCircle} />
+                                    :
+                                    <FontAwesomeIcon color='red' icon={faTimesCircle} />
+                            }
+                            {this.props.confirm ?
+                                <span></span>
+                                :
+                                <span style={{ color: 'red' }} className='small'>Artykuł niezweryfikowany</span>
+                            }
+                            <button className='btn btn-default btn-sm'>
+                                {this.props.like} <FontAwesomeIcon color='blue' icon={faThumbsUp} />
+                            </button>
+                            <button className='btn btn-default btn-sm'>
+                                {this.props.unlike} <FontAwesomeIcon color='black' icon={faThumbsDown} />
+                            </button>
+
+                        </div>
+                        <Select onChange={this.props.onChange} allVersions={this.props.allVersions} />
+
+
+
+
+
+
+                        
+                    </div>
                 </div>
-                <Select onChange={this.props.onChange} allVersions={this.props.allVersions} />
-                
-                
-                
-                    
-                
 
-                    <button className='btn btn-default'>
-                    {this.props.like} <FontAwesomeIcon color='blue' icon={faThumbsUp}  />
-                </button>
-                <button className='btn btn-default mr-1'>
-                {this.props.unlike} <FontAwesomeIcon color='black' icon={faThumbsDown}  />
-                </button>
-                <button 
-                className='btn btn-primary btn-sm'
-                 onClick={() => 
-                 {this.setState(
-                    {
-                    editMode: true,
-                    }
-                 )}}>
-                        Edytuj
-                    </button>
-                    </div>
-                    </div>
-                
 
                 <div className='text-center'>
-                    <h1 style={{fontSize: 60}} className='my-4'>{this.props.title} </h1>
+                    <h1 style={{ fontSize: 60 }} className='my-4'>{this.props.title} </h1>
 
 
                 </div>
-                    <div className='my-1' style={{
-                        
-                    }}>
-                    
-                    </div>
-                    <div className='row justify-content-center'>
+                <div className='my-1' style={{
+
+                }}>
+
+                </div>
+                <div className='row justify-content-center'>
                     <div className='col-11 col-md-8 offset-md-1 col-lg-7 offset-lg-2'>
-                <div className="RichEditor-editor mb-5">
-                    <Editor
-                        blockStyleFn={getBlockStyle}
-                        customStyleMap={styleMap}
-                        editorState = {this.state.editorState}
-                        readOnly={true}
-                        plugins={[linkifyPlugin]}
-                        onChange ={ (editorState) => this.setState({editorState})}
-                        />
-                </div>
-                </div>
-                
-                <div className='col-3'>
-                <div className='d-none d-lg-block'>
-                {
-                    this.props.imageConfirm ?
-                    <figure className="figure">
-                    <img className="img-fluid" src={this.props.image} alt='title' />
-                    <figcaption className="figure-caption">Źródło: {this.props.source ? this.props.source : 'Nieznane'}</figcaption>
-                    </figure>
-                    :
-                    <div>
-                    <figcaption className="figure-caption">Zdjęcie niezwerfikowane.</figcaption>
+                        <div className="RichEditor-editor mb-5">
+                            <Editor
+                                blockStyleFn={getBlockStyle}
+                                customStyleMap={styleMap}
+                                editorState={this.state.editorState}
+                                readOnly={true}
+                                plugins={[linkifyPlugin]}
+                                onChange={(editorState) => this.setState({ editorState })}
+                            />
+                        </div>
                     </div>
 
-                    }
+                    <div className='col-3'>
+                        <div className='d-none d-lg-block'>
+                            {
+                                this.props.imageConfirm ?
+                                    <figure className="figure">
+                                        <img className="img-fluid" src={this.props.image} alt='title' />
+                                        <figcaption className="figure-caption">Źródło: {this.props.source ? this.props.source : 'Nieznane'}</figcaption>
+                                    </figure>
+                                    :
+                                    <div>
+                                        <figcaption className="figure-caption">Zdjęcie niezwerfikowane.</figcaption>
+                                    </div>
+
+                            }
+                        </div>
+                    </div>
                 </div>
-                </div>
-                </div>
-                
-                
-        </div>
+
+
+            </div>
         )
     }
 }
