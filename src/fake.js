@@ -1,227 +1,211 @@
-export default
-[
-    {
-        "id" : 1,
+export default [
+  {
+    id: 1,
 
-        "image_confirm": true,
+    image_confirm: true,
 
-        "main_page": true,
+    confirmed: true,
 
-        // do 24 znaków
-        "title": "Ged",
-        
-        "slug": "ged",
+    main_page: true,
 
-        "category": "Postacie",
+    // do 24 znaków
+    title: "Ged",
 
-        "description": "Jeden z głownych bohaterów cyklu, potężny czarnoksiężnik, późniejszy Arcymag Ziemiomorza oraz Władca Smoków znany jako Krogulec lub Jastrząb, pochodził z wyspy Gont.",
+    slug: "ged",
 
-        "author": "Rafał Safin",
+    category: "Postacie",
 
-        "created": "2020-07-31",
+    description:
+      "Jeden z głownych bohaterów cyklu, potężny czarnoksiężnik, późniejszy Arcymag Ziemiomorza oraz Władca Smoków znany jako Krogulec lub Jastrząb, pochodził z wyspy Gont.",
 
-        "image": "https://2.bp.blogspot.com/-3LptOEumhCo/Uz_OnDyTNLI/AAAAAAAABPs/vcwO0x9pJbY/s1600/czarnoksieznik-z-archipelagu-b-iext22043259.jpg",
+    author: "Rafał Safin",
 
-        "source": "https://2.bp.blogspot.com",
+    created: "2020-07-31",
 
-        // 50-160 chars
+    image:
+      "https://2.bp.blogspot.com/-3LptOEumhCo/Uz_OnDyTNLI/AAAAAAAABPs/vcwO0x9pJbY/s1600/czarnoksieznik-z-archipelagu-b-iext22043259.jpg",
 
-        "versions": [
-            150,
-            151,
-            152,
-            153,
-        ],
+    source: "https://2.bp.blogspot.com",
 
-        "like": "10",
+    // 50-160 chars
 
-        "unlike": "0",
-        
-    },
-    {
-        "id" : 2,
+    versions: [150, 151, 152, 153],
 
-        "image_confirm": true,
+    like: "10",
 
-        "main_page": true,
+    unlike: "0",
+  },
+  {
+    id: 2,
 
-        "title": "Ursula Le Guin",
-        
-        "slug": "ursula-le-guin",
+    image_confirm: true,
 
-        "category": "Inne",
+    confirmed: true,
 
-        "description": "Pisarka, autorka cyklu",
+    main_page: true,
 
-        "author": "Rafał Safin",
+    title: "Ursula Le Guin",
 
-        "created": "2020-07-31",
+    slug: "ursula-le-guin",
 
-        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Ursula_K_Le_Guin_%28cropped%29.JPG/270px-Ursula_K_Le_Guin_%28cropped%29.JPG",
+    category: "Inne",
 
-        "source": "https://2.bp.blogspot.com",
+    description: "Pisarka, autorka cyklu",
 
-        // 50-160 chars
+    author: "Rafał Safin",
 
-        "versions": [
-            150,
-            151,
-            152,
-            153,
-        ],
+    created: "2020-07-31",
 
-        "like": "10",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Ursula_K_Le_Guin_%28cropped%29.JPG/270px-Ursula_K_Le_Guin_%28cropped%29.JPG",
 
-        "unlike": "0",
-        
-    },
-    {
-        "id" : 3,
+    source: "https://2.bp.blogspot.com",
 
-        "image_confirm": true,
+    // 50-160 chars
 
-        "main_page": true,
+    versions: [150, 151, 152, 153],
 
-        "title": "Tenar",
-        
-        "slug": "tenar",
+    like: "10",
 
-        "category": "Postacie",
+    unlike: "0",
+  },
+  {
+    id: 3,
 
-        "description": "Tenar od pierścienia, 'biała kobieta' pochodząca z wyspy Kargard, w młodości najwyższa kapłanka Atuanu.",
+    image_confirm: true,
 
-        "author": "Rafał Safin",
+    confirmed: true,
 
-        "created": "2020-07-31",
+    main_page: true,
 
-        "image": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/aa141d60-9a7a-46fe-9236-0a3ceb7254f7/d2d8t5i-600e1ebf-4824-4c54-9a60-7a5da49d52fc.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvYWExNDFkNjAtOWE3YS00NmZlLTkyMzYtMGEzY2ViNzI1NGY3XC9kMmQ4dDVpLTYwMGUxZWJmLTQ4MjQtNGM1NC05YTYwLTdhNWRhNDlkNTJmYy5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.8cvMSMsFDmFMyBQ01oubRIPKaLmqoq6p5lAJALCX0Iw",
+    title: "Tenar",
 
-        "source": "https://2.bp.blogspot.com",
+    slug: "tenar",
 
-        // 50-160 chars
+    category: "Postacie",
 
-        "versions": [
-            150,
-            151,
-            152,
-            153,
-        ],
+    description:
+      "Tenar od pierścienia, Biała Kobieta, pochodząca z wyspy Kargard, w młodości najwyższa kapłanka Atuanu.",
 
-        "like": "10",
+    author: "Rafał Safin",
 
-        "unlike": "0",
-        
-    },
-    {
-        "id" : 4,
+    created: "2020-07-31",
 
-        "image_confirm": true,
+    image:
+      "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/aa141d60-9a7a-46fe-9236-0a3ceb7254f7/d2d8t5i-600e1ebf-4824-4c54-9a60-7a5da49d52fc.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvYWExNDFkNjAtOWE3YS00NmZlLTkyMzYtMGEzY2ViNzI1NGY3XC9kMmQ4dDVpLTYwMGUxZWJmLTQ4MjQtNGM1NC05YTYwLTdhNWRhNDlkNTJmYy5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.8cvMSMsFDmFMyBQ01oubRIPKaLmqoq6p5lAJALCX0Iw",
 
-        "main_page": true,
+    source: "https://2.bp.blogspot.com",
 
-        "title": "Gont",
-        
-        "slug": "gont",
+    // 50-160 chars
 
-        "category": "Miejsca",
+    versions: [150, 151, 152, 153],
 
-        "description": "Jedna z wysp ziemiomorza, pochodzili z niej między innymi Arcymag Ged, Ogion Milczący.",
+    like: "10",
 
-        "author": "Rafał Safin",
+    unlike: "0",
+  },
+  {
+    id: 4,
 
-        "created": "2020-07-31",
+    image_confirm: true,
 
-        "image": "https://vignette.wikia.nocookie.net/arda/images/5/5a/Earthsea.jpg/revision/latest/top-crop/width/360/height/450?cb=20200125094031&path-prefix=pl",
+    main_page: true,
 
-        "source": "https://2.bp.blogspot.com",
+    confirmed: true,
 
-        // 50-160 chars
+    title: "Gont",
 
-        "versions": [
-            150,
-            151,
-            152,
-            153,
-        ],
+    slug: "gont",
 
-        "like": "10",
+    category: "Miejsca",
 
-        "unlike": "0",
-        
-    },
-    {
-        "id" : 5,
+    description:
+      "Jedna z wysp ziemiomorza, pochodzili z niej między innymi Arcymag Ged, Ogion Milczący.",
 
-        "image_confirm": true,
+    author: "Rafał Safin",
 
-        "main_page": true,
+    created: "2020-07-31",
 
-        "title": "Roke",
-        
-        "slug": "roke",
+    image:
+      "https://vignette.wikia.nocookie.net/arda/images/5/5a/Earthsea.jpg/revision/latest/top-crop/width/360/height/450?cb=20200125094031&path-prefix=pl",
 
-        "category": "Miejsca",
+    source: "https://2.bp.blogspot.com",
 
-        "description": "Wyspa w centrum ziemiomorze, znajduje się na niej najsłynniejsza szkoła magii w Ziemiomorzu.",
+    // 50-160 chars
 
-        "author": "Rafał Safin",
+    versions: [150, 151, 152, 153],
 
-        "created": "2020-07-31",
+    like: "10",
 
-        "image": "https://vignette.wikia.nocookie.net/arda/images/5/5a/Earthsea.jpg/revision/latest/top-crop/width/360/height/450?cb=20200125094031&path-prefix=pl",
+    unlike: "0",
+  },
+  {
+    id: 5,
 
-        "source": "https://2.bp.blogspot.com",
+    image_confirm: true,
 
-        // 50-160 chars
+    main_page: true,
 
-        "versions": [
-            150,
-            151,
-            152,
-            153,
-        ],
+    confirmed: true,
 
-        "like": "10",
+    title: "Roke",
 
-        "unlike": "0",
-        
-    },
-    {
-        "id" : 6,
+    slug: "roke",
 
-        "image_confirm": true,
+    category: "Miejsca",
 
-        "main_page": true,
+    description:
+      "Wyspa w centrum ziemiomorze, znajduje się na niej najsłynniejsza szkoła magii w Ziemiomorzu.",
 
-        "title": "Havnor",
-        
-        "slug": "havnor",
+    author: "Rafał Safin",
 
-        "category": "Miejsca",
+    created: "2020-07-31",
 
-        "description": "Wyspa w centrum Ziemiomorza, stolica Królestwa.",
+    image:
+      "https://vignette.wikia.nocookie.net/arda/images/5/5a/Earthsea.jpg/revision/latest/top-crop/width/360/height/450?cb=20200125094031&path-prefix=pl",
 
-        "author": "Rafał Safin",
+    source: "https://2.bp.blogspot.com",
 
-        "created": "2020-07-31",
+    // 50-160 chars
 
-        "image": "https://vignette.wikia.nocookie.net/arda/images/5/5a/Earthsea.jpg/revision/latest/top-crop/width/360/height/450?cb=20200125094031&path-prefix=pl",
+    versions: [150, 151, 152, 153],
 
-        "source": "https://2.bp.blogspot.com",
+    like: "10",
 
-        // 50-160 chars
+    unlike: "0",
+  },
+  {
+    id: 6,
 
-        "versions": [
-            150,
-            151,
-            152,
-            153,
-        ],
+    image_confirm: true,
 
-        "like": "10",
+    main_page: true,
 
-        "unlike": "0",
-        
-    },
-    
-]
+    confirmed: false,
+
+    title: "Havnor",
+
+    slug: "havnor",
+
+    category: "Miejsca",
+
+    description: "Wyspa w centrum Ziemiomorza, stolica Królestwa.",
+
+    author: "Rafał Safin",
+
+    created: "2020-07-31",
+
+    image:
+      "https://vignette.wikia.nocookie.net/arda/images/5/5a/Earthsea.jpg/revision/latest/top-crop/width/360/height/450?cb=20200125094031&path-prefix=pl",
+
+    source: "https://2.bp.blogspot.com",
+
+    // 50-160 chars
+
+    versions: [150, 151, 152, 153],
+
+    like: "10",
+
+    unlike: "0",
+  },
+];

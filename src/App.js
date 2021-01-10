@@ -9,10 +9,8 @@ import Nav from 'react-bootstrap/Nav';
 import { useLocation } from "react-router-dom";
 import { HashRouter as Router, Link, Route, Switch } from "react-router-dom";
 import Home from './Home/Home';
-import Articles from './Articles/Articles'
 import NewArticle from './NewArticle/NewArticle'
 import Characters from './Characters/Characters'
-import Places from './Places/Places'
 import SingleArticle from './Articles/SingleArticle'
 import {faFacebook} from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -74,10 +72,8 @@ export default function App() {
           <Nav className="mx-auto">
             
             <Nav.Link className='nav-link' as={Link} to="/home">ZIEMIOMORZE</Nav.Link>
-            <Nav.Link className='nav-link' as={Link} to="/swiat">ŚWIAT PRZEDSTAWIONY</Nav.Link>
-            <Nav.Link className='nav-link' as={Link} to="/artykuly">ARTYKUŁY</Nav.Link>
-            
-            <Nav.Link className='nav-link' as={Link} to="/dodaj">DODAJ STRONĘ</Nav.Link>
+            <Nav.Link className='nav-link' as={Link} to="/articles">ARTYKUŁY</Nav.Link>
+            <Nav.Link className='nav-link' as={Link} to="/add">DODAJ STRONĘ</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -85,9 +81,8 @@ export default function App() {
         
       <Route exact path="/" component={Home} />
       <Route path="/home" component={Home} />
-      <Route path="/swiat" component={Characters} />
-      <Route path="/artykuly" component={Articles} />
-      <Route path="/dodaj" component={NewArticle} />
+      <Route path="/articles" component={Characters} />
+      <Route path="/add" component={NewArticle} />
       <Route path="/:topicName" component={SingleArticle} />
 
       </Switch>

@@ -10,7 +10,7 @@ import Image from '../img/cool2.png'
 
 
 export default function Home() {
-    const width = window.innerWidth
+
     const PartOneRight = (
         <div className='ursula'>
             

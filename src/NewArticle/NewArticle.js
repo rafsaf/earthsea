@@ -1,243 +1,152 @@
-import React from 'react';
-import { Editor, EditorState, RichUtils } from 'draft-js';
-import {convertToHTML, convertFromHTML} from 'draft-convert'
-import 'draft-js/dist/Draft.css';
+import React from "react";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
+import BootstrapForm from "react-bootstrap/Form";
+import {defaultCategories} from "../Characters/Characters";
 
-function MyEditor() {
-    const editorState= EditorState.createWithContent(convertFromHTML('<ul><li>kkk</li></ul><ol type="1"><li>jjj</li></ol><h4>jjjj</h4><h4><u>jjjjkkkkkkkkkkkkkkkk</u></h4><blockquote>kjkkkkkkkkkkkkkkkkkkkkk</blockquote><blockquote>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadsasddasdsa</blockquote>'));
-
-    
-  
-    return (
-
-    
-        <div className='RichEditor-editor'>
-              <Editor  blockStyleFn={getBlockStyle} customStyleMap={styleMap} editorState={editorState} />
-    </div>
-    
+const NewArticleCreateSchema = Yup.object().shape({
+  title: Yup.string()
+    .min(3, "Tekst nie może być krótszy niż 3 znaki.")
+    .max(24, "Tekst nie może być dłuższy niż 24 znaków.")
+    .matches(
+      /^[\sAaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrQqSsŚśTtUuWwYyZzŹźŻż:();/.,!'"?!/]+$/,
+      "Dozwolone tylko małe, duże litery, podstawowe znaki interpunkcyjne."
     )
-  }
-
-class RichEditorExample extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { editorState: EditorState.createEmpty() };
-
-        this.focus = () => this.refs.editor.focus();
-        this.onChange = (editorState) => this.setState({ editorState });
-
-        this.handleKeyCommand = (command) => this._handleKeyCommand(command);
-        this.onTab = (e) => this._onTab(e);
-        this.toggleBlockType = (type) => this._toggleBlockType(type);
-        this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
-    }
-
-    _handleKeyCommand(command) {
-        const { editorState } = this.state;
-        const newState = RichUtils.handleKeyCommand(editorState, command);
-        if (newState) {
-            this.onChange(newState);
-            return true;
-        }
-        return false;
-    }
-
-    _onTab(e) {
-        const maxDepth = 4;
-        this.onChange(RichUtils.onTab(e, this.state.editorState, maxDepth));
-    }
-
-    _toggleBlockType(blockType) {
-        this.onChange(
-            RichUtils.toggleBlockType(
-                this.state.editorState,
-                blockType
-            )
-        );
-    }
-
-    _toggleInlineStyle(inlineStyle) {
-        this.onChange(
-            RichUtils.toggleInlineStyle(
-                this.state.editorState,
-                inlineStyle
-            )
-        );
-    }
-
-    render() {
-        const { editorState } = this.state;
-
-        // If the user changes block type before entering any text, we can
-        // either style the placeholder or hide it. Let's just hide it now.
-        let className = 'RichEditor-editor';
-        var contentState = editorState.getCurrentContent();
-        if (!contentState.hasText()) {
-            if (contentState.getBlockMap().first().getType() !== 'unstyled') {
-                className += ' RichEditor-hidePlaceholder';
-            }
-        }
-
-        return (
-            <div>
-                <div>
-                
-                    <button
-                        onClick={() => {
-
-                            alert(` HTML to Save ${convertToHTML(this.state.editorState.getCurrentContent())}`);
-                        }}
-                    >
-                        Save
-              </button>
-                </div>
-                <div className="RichEditor-root">
-
-                    <BlockStyleControls
-                        editorState={editorState}
-                        onToggle={this.toggleBlockType}
-                    />
-                    <InlineStyleControls
-                        editorState={editorState}
-                        onToggle={this.toggleInlineStyle}
-                    />
-                    <div className={className} onClick={this.focus}>
-                        <Editor
-                            blockStyleFn={getBlockStyle}
-                            customStyleMap={styleMap}
-                            editorState={editorState}
-                            handleKeyCommand={this.handleKeyCommand}
-                            onChange={this.onChange}
-                            onTab={this.onTab}
-                            placeholder="Napisz coś..."
-                            ref="editor"
-                            spellCheck={true}
-                        />
-                    </div>
-                    
-                </div>
-            </div>
-        );
-    }
-}
-
-// Custom overrides for "code" style.
-const styleMap = {
-    CODE: {
-        backgroundColor: 'rgba(0, 0, 0, 0.05)',
-        fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
-        fontSize: 16,
-        padding: 2,
-    },
-};
-
-function getBlockStyle(block) {
-    switch (block.getType()) {
-        case 'blockquote': return 'RichEditor-blockquote';
-        default: return null;
-    }
-}
-
-class StyleButton extends React.Component {
-    constructor() {
-        super();
-        this.onToggle = (e) => {
-            e.preventDefault();
-            this.props.onToggle(this.props.style);
-        };
-    }
-
-    render() {
-        let className = 'RichEditor-styleButton';
-        if (this.props.active) {
-            className += ' RichEditor-activeButton';
-        }
-
-        return (
-            <span className={className} onMouseDown={this.onToggle}>
-                {this.props.label}
-            </span>
-        );
-    }
-}
-
-const BLOCK_TYPES = [
-    { label: 'H1', style: 'header-one' },
-    { label: 'H2', style: 'header-two' },
-    { label: 'H3', style: 'header-three' },
-    { label: 'H4', style: 'header-four' },
-    { label: 'H5', style: 'header-five' },
-    { label: 'H6', style: 'header-six' },
-    { label: 'Blockquote', style: 'blockquote' },
-    { label: 'UL', style: 'unordered-list-item' },
-    { label: 'OL', style: 'ordered-list-item' },
-];
-
-const BlockStyleControls = (props) => {
-    const { editorState } = props;
-    const selection = editorState.getSelection();
-    const blockType = editorState
-        .getCurrentContent()
-        .getBlockForKey(selection.getStartKey())
-        .getType();
-
-    return (
-        <div className="RichEditor-controls">
-            {BLOCK_TYPES.map((type) =>
-                <StyleButton
-                    key={type.label}
-                    active={type.style === blockType}
-                    label={type.label}
-                    onToggle={props.onToggle}
-                    style={type.style}
-                />
-            )}
-        </div>
-    );
-};
-
-var INLINE_STYLES = [
-    { label: 'Bold', style: 'BOLD' },
-    { label: 'Italic', style: 'ITALIC' },
-    { label: 'Underline', style: 'UNDERLINE' },
-    { label: 'Monospace', style: 'CODE' },
-];
-
-const InlineStyleControls = (props) => {
-    var currentStyle = props.editorState.getCurrentInlineStyle();
-    return (
-        <div className="RichEditor-controls">
-            {INLINE_STYLES.map(type =>
-                <StyleButton
-                    key={type.label}
-                    active={currentStyle.has(type.style)}
-                    label={type.label}
-                    onToggle={props.onToggle}
-                    style={type.style}
-                />
-            )}
-        </div>
-    );
-};
-
-function PartOne() {
-    return (
-        <div className='justify-content-center part-1'>
-            <div>
-                sda
-            </div>
-        </div>
+    .required("To pole jest wymagane."),
+  slug: Yup.string()
+    .min(3, "Tekst nie może być krótszy niż 3 znaki.")
+    .max(100, "Tekst nie może być dłuższy niż 100 znaków.")
+    .matches(
+      /^[a-z](-?[a-z])*$/,
+      "Dozwolone tylko [a-z]-[a-z]-[...] itd. Na przykład „czarnoksieznik-z-archipelagu”."
     )
-}
+    .required("To pole jest wymagane."),
+  author: Yup.string()
+    .min(3, "Tekst nie może być krótszy niż 3 znaki.")
+    .max(24, "Tekst nie może być dłuższy niż 24 znaków.")
+    .required("To pole jest wymagane."),
+  description: Yup.string()
+    .min(50, "Tekst nie może być krótszy niż 50 znaki.")
+    .max(160, "Tekst nie może być dłuższy niż 160 znaków.")
+    .matches(
+      /^[\sAaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrQqSsŚśTtUuWwYyZzŹźŻż:();/.,!'"?!/]+$/,
+      "Dozwolone tylko małe, duże litery, podstawowe znaki interpunkcyjne."
+    )
+    .required("To pole jest wymagane."),
+  category: Yup.string().required("To pole jest wymagane."),
+});
 
+const Basic = () => (
+  <div className="container my-5 py-3">
+    <h2 className="py-4">Utwórz nowy artykuł</h2>
+
+    <Formik
+      initialValues={{
+        title: "",
+        slug: "",
+        author: "",
+        description: "",
+        category: "Artykuły",
+      }}
+      validationSchema={NewArticleCreateSchema}
+      onSubmit={(values) => {
+        // same shape as initial values
+        alert(JSON.stringify(values));
+      }}
+    >
+      {({ errors, touched }) => (
+        <Form noValidate autoComplete="off">
+          <BootstrapForm.Group controlId="validationCustom01">
+            <BootstrapForm.Label>Nazwa artykułu</BootstrapForm.Label>
+            <Field
+              as={BootstrapForm.Control}
+              name="title"
+              isValid={touched.title && !errors.title}
+              isInvalid={touched.title && errors.title}
+            />
+            {errors.title && touched.title ? (
+              <BootstrapForm.Control.Feedback type="invalid">
+                {errors.title}
+              </BootstrapForm.Control.Feedback>
+            ) : null}
+          </BootstrapForm.Group>
+
+          <BootstrapForm.Group controlId="validationCustom02">
+            <BootstrapForm.Label>Adres URL artykułu (slug)</BootstrapForm.Label>
+            <Field
+              as={BootstrapForm.Control}
+              name="slug"
+              isValid={touched.slug && !errors.slug}
+              isInvalid={touched.slug && errors.slug}
+            />
+            {errors.slug && touched.slug ? (
+              <BootstrapForm.Control.Feedback type="invalid">
+                {errors.slug}
+              </BootstrapForm.Control.Feedback>
+            ) : null}
+          </BootstrapForm.Group>
+
+          <BootstrapForm.Group controlId="validationCustom03">
+            <BootstrapForm.Label>Autor</BootstrapForm.Label>
+            <Field
+              as={BootstrapForm.Control}
+              name="author"
+              isValid={touched.author && !errors.author}
+              isInvalid={touched.author && errors.author}
+            />
+            {errors.author && touched.author ? (
+              <BootstrapForm.Control.Feedback type="invalid">
+                {errors.author}
+              </BootstrapForm.Control.Feedback>
+            ) : null}
+          </BootstrapForm.Group>
+
+          <BootstrapForm.Group controlId="validationCustom04">
+            <BootstrapForm.Label>Krótki opis artykułu</BootstrapForm.Label>
+            <Field
+              as={BootstrapForm.Control}
+              name="description"
+              isValid={touched.description && !errors.description}
+              isInvalid={touched.description && errors.description}
+            />
+            {errors.description && touched.description ? (
+              <BootstrapForm.Control.Feedback type="invalid">
+                {errors.description}
+              </BootstrapForm.Control.Feedback>
+            ) : null}
+          </BootstrapForm.Group>
+
+          <BootstrapForm.Group controlId="validationCustom05">
+            <BootstrapForm.Label>Wybierz kategorię</BootstrapForm.Label>
+            <BootstrapForm.Control
+              as={Field}
+              component="select"
+              name="category"
+              isInvalid={touched.category && errors.category}
+            >
+            {defaultCategories.map((row) => (
+                <option>{row.name}</option>
+            ))}
+
+            </BootstrapForm.Control>
+            {errors.category && touched.category ? (
+              <div>{errors.category}</div>
+            ) : null}
+          </BootstrapForm.Group>
+
+          <button className="btn btn-primary my-2" type="submit">
+            Utwórz
+          </button>
+        </Form>
+      )}
+    </Formik>
+  </div>
+);
 
 export default function NewArticle() {
-    return (
-        <div id='new article'>
-            <MyEditor />
-
-            <PartOne />
-            <RichEditorExample />
-        </div>
-    )
+  return (
+    <div id="new article">
+      <Basic />
+    </div>
+  );
 }

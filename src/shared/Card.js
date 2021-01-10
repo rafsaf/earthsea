@@ -36,7 +36,7 @@ export default function MyCard(props) {
             {constHeight ?
             <div className='text-center'>
                 {props.image ?
-            <img className='cardImage rounded'  src={props.image} />
+            <img className='cardImage rounded' alt="Card" src={props.image} />
             :
             <span></span>
             }
@@ -44,7 +44,7 @@ export default function MyCard(props) {
             :
             <div className='text-center'>
                 {props.image ?
-            <img className='cardImage rounded'  src={props.image} />
+            <img className='cardImage rounded' alt="Card" src={props.image} />
             :
             <span></span>
             }
