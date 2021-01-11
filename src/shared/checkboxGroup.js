@@ -11,10 +11,11 @@ export default function CheckboxesGroup(props) {
     <div className="">
       <FormControl component="fieldset" className="">
         <FormLabel component="legend"> {props.search}</FormLabel>
-        <p className="mb-0">Tylko zweryfikowane</p>
+        
         <FormControlLabel
           control={
             <Switch
+            className="mb-0"
               checked={props.verifiedOnly}
               onChange={props.handleVerifiedOnlyChange}
               name="switchVerfified"
@@ -23,6 +24,12 @@ export default function CheckboxesGroup(props) {
             />
           }
         />
+        
+          { props.verifiedOnly ?
+          <p className="small mt-0 py-0">Tylko zweryfikowane</p>
+        : <p className="small mt-0 py-0">Wszystkie artykuły</p>
+        }
+        
         <p className="title">Kategorie</p>
         <FormGroup>
           <FormControlLabel

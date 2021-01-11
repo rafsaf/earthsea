@@ -3,7 +3,8 @@ import TextField from "@material-ui/core/TextField";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Data from "../fake";
+import Error from "../shared/Error";
+import * as api from "../shared/api";
 import MyCard from "../shared/Card";
 import Part from "../shared/Part";
 import RadioGroup from "../shared/radioGroup";
@@ -28,10 +29,24 @@ export default function Characters() {
   const [verifiedOnly, setVerifiedOnly] = useState(true);
 
   const [filter, setFilter] = useState("all");
-  const [articles, setArticles] = useState(Data);
   const [search, setSearch] = useState(null);
 
-  const handleVerifiedOnlyChange = (event) => {
+  const [articles, setArticles] = useState(null);
+  const [articlesError, setArticlesError] = useState(null);
+
+  const fetchArticles = () => {
+    api
+      .receiveAllArticles()
+      .then((response) => {
+        setArticles(response.data);
+        setArticlesError(false);
+      })
+      .catch(() => {
+        setArticlesError(true);
+      });
+  };
+
+  const handleVerifiedOnlyChange = () => {
     setVerifiedOnly(!verifiedOnly);
   };
 
@@ -88,16 +103,20 @@ export default function Characters() {
   };
 
   useEffect(() => {
-    if (allCategories.label.length === 9) {
+    fetchArticles();
+  }, []);
+
+  useEffect(() => {
+    if (allCategories.label.length === 9 && articles) {
       let length = articles.length;
       let newAllCategories = allCategories;
       newAllCategories.label += `(${length})`;
       setAllCategories(newAllCategories);
     }
-  }, []);
+  }, [allCategories, articles]);
 
   useEffect(() => {
-    if (categories[0].label.length === 8) {
+    if (categories[0].label.length === 8 && articles) {
       let newCategories = [...categories];
       newCategories.forEach((category) => {
         let length;
@@ -112,7 +131,7 @@ export default function Characters() {
       });
       setCategories(newCategories);
     }
-  }, []);
+  }, [categories, articles]);
 
   const PartOne = <div className="ursula">Świat przedstawiony</div>;
 
@@ -126,75 +145,87 @@ export default function Characters() {
           backgroundImage: `url(${Image})`,
         }}
       >
-        <Row className="justify-content-center py-3">
-          <Col xs="auto">
-            <CheckboxGroup
-              allCheck={allCategories}
-              categories={categories}
-              verifiedOnly={verifiedOnly}
-              handleAllCategoryChange={handleAllCategoryChange}
-              handleCategoryChange={handleCategoryChange}
-              handleVerifiedOnlyChange={handleVerifiedOnlyChange}
-            />
-          </Col>
-          <Col xs="auto" lg={10} className="border-world">
-            <TextField
-              onChange={(e) => searchSpace(e)}
-              className="mx-1 mt-4 mb-2"
-              style={{ width: "99%" }}
-              id="standard-basic"
-              label="Tutaj wpisz szukaną frazę..."
-            />
+        {articles && articlesError === false ? (
+          <Row className="justify-content-center py-3">
+            <Col xs="auto">
+              <CheckboxGroup
+                allCheck={allCategories}
+                categories={categories}
+                verifiedOnly={verifiedOnly}
+                handleAllCategoryChange={handleAllCategoryChange}
+                handleCategoryChange={handleCategoryChange}
+                handleVerifiedOnlyChange={handleVerifiedOnlyChange}
+              />
+            </Col>
+            <Col xs="auto" lg={10} className="border-world">
+              <TextField
+                onChange={(e) => searchSpace(e)}
+                className="mx-1 mt-4 mb-2"
+                style={{ width: "99%" }}
+                id="standard-basic"
+                label="Tutaj wpisz szukaną frazę..."
+              />
 
-            <RadioGroup
-              className="mx-1"
-              filter={filter}
-              handleChange={handleChange}
-            />
-            <Row className="justify-content-start mx-1">
-              {articles
-                .filter((row) => {
-                  if (verifiedOnly) {
-                    return row.confirmed;
-                  } else {
-                    return true;
-                  }
-                })
-                .filter((row) => {
-                  if (allCategories.isChecked) {
-                    return row;
-                  } else {
-                    let length;
-                    length = categories.filter((cat) => {
-                      return cat.name === row.category && cat.isChecked;
-                    }).length;
+              <RadioGroup
+                className="mx-1"
+                filter={filter}
+                handleChange={handleChange}
+              />
+              <Row className="justify-content-start mx-1">
+                {articles
+                  .filter((row) => {
+                    if (verifiedOnly) {
+                      return row.confirmed;
+                    } else {
+                      return true;
+                    }
+                  })
+                  .filter((row) => {
+                    if (allCategories.isChecked) {
+                      return row;
+                    } else {
+                      let length;
+                      length = categories.filter((cat) => {
+                        return cat.name === row.category && cat.isChecked;
+                      }).length;
 
-                    if (length === 1) {
+                      if (length === 1) {
+                        return true;
+                      }
+                      return false;
+                    }
+                  })
+
+                  .filter((row) => {
+                    if (search == null) return row;
+                    else if (filterRow(row)) {
                       return true;
                     }
                     return false;
-                  }
-                })
-
-                .filter((row) => {
-                  if (search == null) return row;
-                  else if (filterRow(row)) {
-                    return true;
-                  }
-                  return false;
-                })
-                .map((row) => (
-                  <MyCard
-                    small
-                    key={row.description}
-                    title={row.title}
-                    description={row.description}
-                    slug={row.slug}
-                  ></MyCard>
-                ))}
-            </Row>
-          </Col>
-        </Row>
+                  })
+                  .map((row) => (
+                    <MyCard
+                      small
+                      key={row.description}
+                      title={row.title}
+                      description={row.description}
+                      slug={row.slug}
+                    ></MyCard>
+                  ))}
+              </Row>
+            </Col>
+          </Row>
+        ) : (
+          <div className="text-center pt-4" style={{ height: "80vh" }}>
+            <Error
+              show={articlesError}
+              onExit={() => {
+                setArticlesError(null);
+                fetchArticles();
+              }}
+            ></Error>
+          </div>
+        )}
       </Container>
     </div>
   );

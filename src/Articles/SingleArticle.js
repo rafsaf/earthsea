@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Part from "../shared/Part";
 import Error from "../shared/Error";
-import Data from "../fake";
-import Ver from "../fake_version";
-import API from "../shared/API";
+import * as api from "../shared/api";
 import Select from "./select";
 import { EditorState, RichUtils } from "draft-js";
 import Editor from "draft-js-plugins-editor";
@@ -13,27 +11,52 @@ import { convertToHTML, convertFromHTML } from "draft-convert";
 import "draft-js/dist/Draft.css";
 import {
   faThumbsUp,
-  faThumbsDown,
   faTimesCircle,
   faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "../img/cool.png";
+import Alert from "react-bootstrap/Alert";
 
 export default function NewArticle() {
   let { topicName } = useParams();
-  const [article, setArticle] = useState(Data[0]);
-  const [version, setVersion] = useState(Ver[0]);
-  const [allVersions, setAllVersions] = useState(Ver);
-  const [articleError, setArticleError] = useState(false);
+  const [article, setArticle] = useState();
+  const [version, setVersion] = useState();
+  const [allVersions, setAllVersions] = useState();
+  const [articleError, setArticleError] = useState(null);
 
   const fetchArticle = () => {
-    setArticle(Data[0]);
+    api
+      .receiveArticle(topicName)
+      .then((response) => {
+        setArticle(response.data);
+      })
+      .catch((error) => {
+        if (!error.response) {
+          setArticleError(true);
+        } else {
+          setArticleError("notFound");
+        }
+      });
   };
 
   const fetchVersions = () => {
-    setAllVersions(Ver);
-    setVersion(Ver[0]);
+    api
+      .receiveArticleVersion(topicName)
+      .then((response) => {
+        setAllVersions(response.data);
+        setVersion(response.data[0]);
+        setArticleError(false);
+      })
+      .catch((error) => {
+        if (!error.response.status) {
+          alert("asd");
+
+          setArticleError(true);
+        } else {
+          setArticleError("notFound");
+        }
+      });
   };
 
   useEffect(() => {
@@ -66,8 +89,10 @@ export default function NewArticle() {
         }}
       >
         <div>
-          {!articleError ? (
+          {!articleError && article && version ? (
             <RichEditorExample
+              fetchVersions={fetchVersions}
+              topicName={topicName}
               onChange={handleClick}
               allVersions={allVersions}
               title={article.title}
@@ -78,7 +103,6 @@ export default function NewArticle() {
               like={article.like}
               confirm={version.confirm}
               imageConfirm={article.image_confirm}
-              unlike={article.unlike}
               author={article.author}
               source={article.source}
             />
@@ -87,8 +111,9 @@ export default function NewArticle() {
               <Error
                 show={articleError}
                 onExit={() => {
-                  setArticleError(false);
+                  setArticleError(null);
                   fetchArticle();
+                  fetchVersions();
                 }}
               ></Error>
             </div>
@@ -126,6 +151,8 @@ class RichEditorExample extends React.Component {
       editorState: EditorState.createWithContent(this.blocks),
       editMode: false,
       saved: false,
+      like: props.like,
+      success: false,
     };
     this.focus = () => this.refs.editor.focus();
 
@@ -196,11 +223,17 @@ class RichEditorExample extends React.Component {
               <button
                 className="btn btn-sm btn-outline-primary mb-5"
                 onClick={() => {
-                  alert(
-                    ` HTML to Save ${convertToHTML(
-                      this.state.editorState.getCurrentContent()
-                    )}`
+                  const text = convertToHTML(
+                    this.state.editorState.getCurrentContent()
                   );
+                  api.versionCreate(this.props.topicName, text).then(() => {
+                    this.setState({
+                      editMode: false,
+                      editorState: EditorState.createWithContent(this.blocks),
+                      success: true,
+                    });
+                    this.props.fetchVersions();
+                  });
                 }}
               >
                 Zaproponuj zmiany i wyślij
@@ -280,12 +313,22 @@ class RichEditorExample extends React.Component {
       );
     }
     return (
-      <div>
+      <div style={{ minHeight: "80vh" }}>
         <div className="col-12 mx-auto">
           <div
-            className="text-left py-1"
+            className="text-left py-2"
             style={{ marginRight: -15, marginLeft: -15 }}
           >
+            <Alert
+            className="mt-3"
+              show={this.state.success}
+              variant="success"
+              dismissible
+              onClose={() => this.setState({ success: false })}
+            >
+              <p>Pomyślnie dodano nową wersję, znajdziesz ją jako pierwszą z niezweryfikowanych.</p>
+              <p>Zostanie ona z czasem przeglądnięta i dodana bądź usunięta.</p>
+            </Alert>
             <div className="pb-1">
               <button
                 className="btn btn-primary btn-sm mr-2"
@@ -330,13 +373,25 @@ class RichEditorExample extends React.Component {
                   Artykuł niezweryfikowany
                 </span>
               )}
-              <button className="btn btn-default btn-sm">
-                {this.props.like}{" "}
+              <button
+                onClick={() => {
+                  const clicked = localStorage.getItem(
+                    `${this.props.topicName}-like`
+                  );
+                  if (!clicked) {
+                    api.likeArticle(this.props.topicName).then(() => {
+                      localStorage.setItem(
+                        `${this.props.topicName}-like`,
+                        "true"
+                      );
+                      this.setState({ like: this.state.like + 1 });
+                    });
+                  }
+                }}
+                className="btn btn-default btn-sm"
+              >
+                {this.state.like}{" "}
                 <FontAwesomeIcon color="blue" icon={faThumbsUp} />
-              </button>
-              <button className="btn btn-default btn-sm">
-                {this.props.unlike}{" "}
-                <FontAwesomeIcon color="black" icon={faThumbsDown} />
               </button>
             </div>
             <Select
@@ -348,7 +403,7 @@ class RichEditorExample extends React.Component {
 
         <div className="text-center">
           <h1 style={{ fontSize: 60 }} className="my-4">
-            {this.props.title}{" "}
+            {this.props.title}
           </h1>
         </div>
         <div className="my-1" style={{}}></div>
@@ -375,7 +430,7 @@ class RichEditorExample extends React.Component {
                 <figure className="figure">
                   <img
                     className="img-fluid"
-                    src={this.props.image}
+                    src={api.API_IMG + this.props.image}
                     alt="title"
                   />
                   <figcaption className="figure-caption">
