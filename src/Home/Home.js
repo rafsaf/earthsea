@@ -58,7 +58,7 @@ export default function Home() {
         }}
       >
         {articles && latestArticles && articlesError === false ? (
-          <Row className=" mx-1 py-3 justify-content-center">
+          <Row className=" mx-1 py-4 justify-content-center">
             <Col xs={12} xl={{ span: 8, offset: 1 }}>
               <Row className="py-2 justify-content-center">
                 {articles.map((row) => (

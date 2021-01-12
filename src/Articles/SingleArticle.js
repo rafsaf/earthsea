@@ -18,7 +18,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "../img/cool.png";
 import Alert from "react-bootstrap/Alert";
 
-export default function NewArticle() {
+export default function SingleArticle() {
   let { topicName } = useParams();
   const [article, setArticle] = useState();
   const [version, setVersion] = useState();
@@ -217,7 +217,7 @@ class RichEditorExample extends React.Component {
     }
     if (this.state.editMode) {
       return (
-        <div className="col-12 col-lg-7 mx-auto">
+        <div className="col-12 col-lg-7 mx-auto py-5">
           <div className="RichEditor-root">
             <div className="text-right">
               <button

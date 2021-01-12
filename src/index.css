@@ -24,7 +24,7 @@
   }
 }
 .ursula {
-  font-family: 'Lobster', cursive;
+  color: white;
   font-size: x-large;
 }
 .title {
@@ -42,18 +42,29 @@
   color: #fafcfc !important;
   font-size: x-large;
 }
+.contact-title {
+  font-family: 'Oswald', sans-serif;
+  color: #00d6d6 !important;
+  font-size: x-large;
+}
+.contact {
+  font-family: 'Oswald', sans-serif;
+  color: #fafcfc !important;
+  font-size: large;
+}
 .nav-link:hover {
   color: white !important;
 }
 .read-more {
-  font-family: 'Lobster', cursive;
   color: #002a32 !important;
+  font-family: cursive;
+  font-weight: bold;
   padding-left: 1px;
-  font-size: large;
+  font-size: normal;
 }
 .read-more:hover {
   color: #011616 !important;
-  border-bottom: 1px solid #011616;
+  border-bottom: 2px solid #011616;
 }
 .logo {
   max-height: 100px;
