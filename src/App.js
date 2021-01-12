@@ -12,13 +12,13 @@ import NewArticle from "./NewArticle/NewArticle";
 import Characters from "./Characters/Characters";
 import SingleArticle from "./Articles/SingleArticle";
 
-const FooterLink = ({ url, text, small }) => (
+const FooterLink = ({ url, text, white }) => (
   <a
     href={url}
     rel="noopener noreferrer"
     target="_blank"
-    className={small ? "" : "footer-link"}
-    style={small ? {fontSize: "x-small"} : {}}
+    className={white ? "" : "footer-link"}
+    style={white ? { color: "white" } : {}}
   >
     {text}
   </a>
@@ -33,7 +33,7 @@ function Footer() {
       className="col-12 col-md-9 col-lg-6 mx-auto"
     >
       <p className="contact-title">INFORMACJE</p>
-      <p className="contact">
+      <p>
         Strona poświęcona twórczości{" "}
         <FooterLink
           url="https://www.ursulakleguin.com/biography"
@@ -71,12 +71,19 @@ function Footer() {
       wyłącznie to, co musi czynić...
       <br />
       <br />
-      
+      <br />
+      <br />
+      &copy; 2020 <FooterLink
+        url="https://www.rafsaf.pl/"
+        text="rafsaf.pl"
+      /> |{" "}
+      <FooterLink
+        white="true"
+        url={`${api.API_IMG}/admin/login/`}
+        text="Zaloguj się jako administrator."
+      />
+      <br />
 
-      &copy; 2020 <FooterLink url="https://www.rafsaf.pl/" text="rafsaf.pl" />
-      <br />
-      <br />
-      <FooterLink small="true" url={`${api.API_IMG}/admin/login/`} text="ADMIN PANEL" /> 
     </div>
   );
   return (

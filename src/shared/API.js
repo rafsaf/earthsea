@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const API_IMG = "https://rafsaf2.eu.pythonanywhere.com/";
+export const API_IMG = "https://rafsaf2.eu.pythonanywhere.com";
 export const API_URL = "https://rafsaf2.eu.pythonanywhere.com/api/";
 
 export const receiveArticle = (slug) =>
