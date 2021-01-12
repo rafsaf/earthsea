@@ -13,7 +13,6 @@ export default function MyCard(props) {
   const homeWidth = props.homeWidth ? "px-1 py-2 my-2 col-6 col-lg-3" : null;
   let cardClass;
   let constHeight;
-  const className = "cardImage rounded";
   if (small) {
     cardClass = small;
     constHeight = false;
