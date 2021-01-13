@@ -6,7 +6,7 @@ import Part from "./shared/Part";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { useLocation } from "react-router-dom";
-import { HashRouter as Router, Link, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import Home from "./Home/Home";
 import NewArticle from "./NewArticle/NewArticle";
 import Characters from "./Characters/Characters";
@@ -112,7 +112,7 @@ function ScrollToTop() {
 export default function App() {
   return (
     <div className="app">
-      <Router hashType="noslash">
+      <Router basename={process.env.PUBLIC_URL}>
         <ScrollToTop />
 
         <Navbar
