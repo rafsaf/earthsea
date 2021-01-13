@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Image from "../img/placeholder.png";
+import Placeholder from "../img/placeholder.png";
 
 const ImageLoad = ({ src, className }) => {
   const [loading, setLoading] = useState(true);
-  const [currentSrc, setCurrentSrc] = useState(`url(${Image})`);
+  const [currentSrc, setCurrentSrc] = useState(Placeholder);
 
   useEffect(() => {
     const imageToLoad = new Image();

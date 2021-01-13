@@ -1,7 +1,12 @@
 import axios from "axios";
 
-export const API_IMG = "https://rafsaf2.eu.pythonanywhere.com";
-export const API_URL = "https://rafsaf2.eu.pythonanywhere.com/api/";
+const local = false;
+export const API_IMG = local
+  ? "http://localhost:8000"
+  : "https://rafsaf2.eu.pythonanywhere.com";
+export const API_URL = local
+  ? "http://localhost:8000/api/"
+  : "https://rafsaf2.eu.pythonanywhere.com/api/";
 
 export const receiveArticle = (slug) =>
   axios.get(`${API_URL}article/${slug}/?format=json`);
