@@ -146,7 +146,7 @@ export default function Characters() {
         }}
       >
         {articles && articlesError === false ? (
-          <Row className="justify-content-center py-3 mb-5">
+          <Row className="justify-content-center py-3 pb-5">
             <Col xs="auto">
               <CheckboxGroup
                 allCheck={allCategories}
