@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Placeholder from "../img/placeholder.png";
 
-const ImageLoad = ({ src, className }) => {
+const ImageLoad = ({ src, className, href }) => {
   const [loading, setLoading] = useState(true);
   const [currentSrc, setCurrentSrc] = useState(Placeholder);
 
@@ -20,12 +20,14 @@ const ImageLoad = ({ src, className }) => {
   }, [src]);
 
   return (
+    <a href={href}>
     <img
       style={{ opacity: loading ? 0.2 : 1, transition: "opacity .15s linear" }}
       className={className}
       src={currentSrc}
       alt="Not found"
     />
+    </a>
   );
 };
 

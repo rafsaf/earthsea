@@ -8,9 +8,9 @@ import AsyncImage from "../shared/asyncImage";
 import * as api from "../shared/api";
 
 export default function MyCard(props) {
-  const small = props.small ? "px-1 py-2 my-2 col-6 col-md-3 col-xl-2" : null;
-  const fullWidth = props.fullWidth ? " my-2 col-6 col-lg-12 " : null;
-  const homeWidth = props.homeWidth ? "px-1 py-2 my-2 col-6 col-lg-3" : null;
+  const small = props.small ? "px-1 py-2 my-2 col-12 col-md-3 col-xl-2" : null;
+  const fullWidth = props.fullWidth ? " my-2 col-12 col-lg-12 " : null;
+  const homeWidth = props.homeWidth ? "px-1 py-2 my-2 col-12 col-sm-6 col-lg-3" : null;
   let cardClass;
   let constHeight;
   if (small) {
@@ -22,6 +22,14 @@ export default function MyCard(props) {
   } else if (homeWidth) {
     cardClass = homeWidth;
     constHeight = true;
+  }
+  if (homeWidth) {
+    return (
+      <div className={cardClass}>
+        <AsyncImage className="cardImage" src={api.API_IMG + props.image} href={"/"+props.slug} />
+        <h2 class="img-text">{props.title}</h2>
+      </div>
+    );
   }
 
   return (
@@ -44,13 +52,19 @@ export default function MyCard(props) {
         {constHeight ? (
           <div className="text-center">
             {props.image ? (
-              <AsyncImage className="cardImage rounded" src={api.API_IMG + props.image} />
+              <AsyncImage
+                className="cardImage"
+                src={api.API_IMG + props.image}
+              />
             ) : null}
           </div>
         ) : (
           <div className="text-center">
             {props.image ? (
-              <AsyncImage className="cardImage rounded" src={api.API_IMG + props.image} />
+              <AsyncImage
+                className="cardImage"
+                src={api.API_IMG + props.image}
+              />
             ) : null}
           </div>
         )}
@@ -67,6 +81,7 @@ export default function MyCard(props) {
           </Card.Link>
         </div>
       </Card.Body>
+      
     </Card>
   );
 }

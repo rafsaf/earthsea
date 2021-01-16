@@ -6,7 +6,6 @@ import Col from "react-bootstrap/Col";
 import Error from "../shared/Error";
 import * as api from "../shared/api";
 import MyCard from "../shared/Card";
-import Part from "../shared/Part";
 import RadioGroup from "../shared/radioGroup";
 import CheckboxGroup from "../shared/checkboxGroup";
 import Image from "../img/cool2.png";
@@ -133,11 +132,8 @@ export default function Characters() {
     }
   }, [categories, articles]);
 
-  const PartOne = <div className="ursula">Świat przedstawiony</div>;
-
   return (
     <div id="characters">
-      <Part Image size="larger" height="100px" right={PartOne} />
       <Container
         fluid
         style={{
@@ -146,7 +142,7 @@ export default function Characters() {
         }}
       >
         {articles && articlesError === false ? (
-          <Row className="justify-content-center py-3 pb-5">
+          <Row className="justify-content-center py-4 pb-5">
             <Col xs="auto">
               <CheckboxGroup
                 allCheck={allCategories}
