@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const local = true;
+const local = false;
 export const API_IMG = local
   ? "http://localhost:8000"
   : "https://rafsaf2.eu.pythonanywhere.com";
